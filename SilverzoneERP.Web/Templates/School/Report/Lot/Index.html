@@ -1,0 +1,19 @@
+﻿
+<form name="frm"
+      ng-submit="frm.$valid && SearchSchool(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div ng-show="isEdit">
+            <div class="row" ng-include="'Templates/School/Report/Lot/Search.html'"></div>
+            <hr class="style17" />
+            <div class="row" ng-include="'Templates/School/Report/Lot/SearchList.html'"></div>
+        </div>
+        <div ng-hide="isEdit">
+            <div class="row" ng-include="'Templates/School/Report/Lot/LotList.html'"></div>
+        </div>
+    </div>
+</form>

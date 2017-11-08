@@ -1,0 +1,29 @@
+﻿<style>
+    .has-error {
+        color: red;
+    }
+</style>
+<title>:: silverzone olympiads :: silverzone</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="" />
+
+<!--Start header-->
+<!--<section class="d_header" ng-include="'Templates/Common/Login/Partial/Header.html'"></section>-->
+<!--End header-->
+
+<!--Start SignIn-->
+<section  ng-if="IsLogin"  ng-include="'Templates/Common/Login/Partial/SignIn.html'"></section>
+<!--End SignIn-->
+
+<!--Start SignUp-->
+<section ng-if="IsSignUp"  ng-include="'Templates/Common/Login/Partial/SignUp.html'"></section>
+<!--End SignUp-->
+
+<!--Start VerifyOTP-->
+<section ng-if="IsNextToOTP" ng-include="'Templates/Common/Login/Partial/VerifyOTP.html'"></section>
+<!--End VerifyOTP-->
+
+<!--Start Footer-->
+<!--<section ng-include="'Templates/Common/Login/Partial/Footer.html'"></section>-->
+<!--End Footer-->

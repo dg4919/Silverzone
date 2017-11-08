@@ -1,0 +1,186 @@
+﻿<form name="frm"
+      ng-submit="Submit()"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <div ng-show="isEdit">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <label>Select Level</label>
+                        <div class="form-group col-md-12">
+                            <label class="radio-inline"
+                                   ng-repeat="level in levelTypes">
+                            <input type="radio" 
+                                   name="leveltype_radio"
+                                   ng-model="model.levelId" 
+                                   value="{{ level.Id }}">
+                            {{ level.type }}
+                            </label>
+                        </div>
+                    </div>
+
+                        <div class="col-lg-12">
+
+                            <div class="col-sm-6">
+                                <div class="form-group col-md-8">
+                                    <label>School/Registration Code:</label>
+                                    <input type="text" ng-model="schoolCode" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3" style="margin-top: 26px;margin-left: -20px;">
+                                    <button type="button" class="btn btn-default btn-sm" value="Search" ng-click="srchSchool()">
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6"
+                                 style="border: dashed #ddd;padding: 15px;"
+                                 ng-if="schInfo">
+                                <p class="col-sm-6"> <b>School Name </b><small> : {{ schInfo.SchName }} </small></p>
+                                <p class="col-sm-6"> <b>School Code </b><small> : {{ schInfo.SchCode }} </small></p>
+                                <p class="col-sm-6"> <b>Reg. No. </b><small> : {{ schInfo.RegNo }} </small></p>
+                                <p class="col-sm-6"> <b>Cord. Name </b><small> : {{ schInfo.CoOrdName }} </small></p>
+                                <p class="col-sm-6"> <b>Cord. Mobile </b><small> : {{ schInfo.CoOrdMobile }} </small></p>
+                                <p class="col-sm-6"> <b>Total Students Enroll </b><small> : {{ schInfo.totalStudent }} </small></p>
+                                <p class="col-sm-6"> <b>Level </b><small> : 1</small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" style="margin-top: 20px;">
+                            <div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>OMR Sheets</label>
+                                    <input type="text" ng-model="model.OMR_Sheets" class="form-control">
+                                </div><div class="form-group col-md-12">
+                                    <label>Gudelines is present ? </label>
+                                    <input type="checkbox" ng-model="model.Attedence_sheet">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>QP of Class 1</label>
+                                    <input type="text" ng-model="model.QP_Class1" class="form-control">
+                                </div><div class="form-group col-md-12">
+                                    <label>QP of Class 2</label>
+                                    <input type="text" ng-model="model.QP_Class2" class="form-control">
+                                </div><div class="form-group col-md-12">
+                                    <label>Other</label>
+                                    <input type="text" ng-model="model.Other" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>Payment Mode</label>
+                                    <select class="form-control"
+                                            ng-model="model.PaymentType"
+                                            ng-options="::type.Id as ::type.Name for type in paymentType">
+                                        <option value=""> --- Select Payment Mode --- </option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Amount</label>
+                                    <input type="text" ng-model="model.Amount" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" style="margin-top: 20px;">
+                            <div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>OMR Scanned</label>
+                                    <input type="text" ng-model="model.ansSheet_scanInfo.OMR_Scanned" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>ScannedNo From</label>
+                                    <input type="text" ng-model="model.ansSheet_scanInfo.ScannedNo_From" class="form-control">
+                                </div>
+                            </div><div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>Rejected Sheet</label>
+                                    <input type="text" ng-model="model.ansSheet_scanInfo.Rejected_Sheet" class="form-control">
+                                </div>
+                             
+                               <div class="form-group col-md-12">
+                                    <label>ScannedNo To</label>
+                                    <input type="text" ng-model="model.ansSheet_scanInfo.ScannedNo_To" class="form-control">
+                                </div>
+                            </div><div class="col-sm-4">
+
+                                <div class="form-group col-md-12">
+                                    <label>Remarks</label>
+                                    <textarea ng-model="model.ansSheet_scanInfo.Remarks" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Bundle No</label>
+                                    <input type="text" ng-model="model.budleNo" class="form-control" readonly>
+                                </div>
+                                <div class="col-sm-6" style="margin-top: 23px;">
+                                    <input type="button"
+                                           class="btn btn-warning btn-sm"
+                                           value="Next Bundle No"
+                                           ng-click="model.budleNo = model.budleNo + 1">
+                                    <input type="button" class="btn btn-primary btn-xs" 
+                                           value="Reset" 
+                                           ng-click="reset_bunleNo()">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+
+            <table ng-if="ansSheet_reciveList.length"
+                   class="table table-striped responsive"
+                   wt-responsive-table>
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>School Code</th>
+                        <th>Reg. No</th>
+                        <th>Level</th>
+                        <th>OMR</th>
+                        <th>Class 1</th>
+                        <th>Class 2</th>
+                        <th>Other</th>
+                        <th>Sacn From</th>
+                        <th>Sacn To</th>
+                        <th>Rejected Sheet</th>
+                        <th>Bundle No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entity in ansSheet_reciveList">
+                        <td>{{ $index+1 }}</td>
+                        <td ng-bind="::entity.SchCode"></td>
+                        <td ng-bind="::entity.RegNo"></td>
+                        <td ng-bind="::entity.LevelName"></td>
+                        <td ng-bind="::entity.OMR_Sheets"></td>
+                        <td ng-bind="::entity.QP_Class1"></td>
+                        <td ng-bind="::entity.QP_Class2"></td>
+                        <td ng-bind="::entity.Other"></td>
+                        <td ng-bind="::entity.ScannedNo_From"></td>
+                        <td ng-bind="::entity.ScannedNo_To"></td>
+                        <td ng-bind="::entity.Rejected_Sheet"></td>
+                        <td>
+                            <a href="#"
+                               ng-click="get_Report(entity.Bundle_No)"
+                               ng-bind="::entity.Bundle_No">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</form>

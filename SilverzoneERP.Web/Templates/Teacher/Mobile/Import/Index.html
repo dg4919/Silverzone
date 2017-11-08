@@ -1,0 +1,73 @@
+﻿
+<form name="frm"
+      ng-submit="Search(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group col-md-2">
+                    <label>From :</label>
+                    <input type='text'
+                           name="From"
+                           class="form-control"
+                           show-picker
+                           ng-model="Filter.From" />                   
+                </div>
+                <div class="form-group col-md-2">
+                    <label>To :</label>
+                    <input type='text'
+                           name="To"
+                           class="form-control"
+                           show-picker
+                           ng-model="Filter.To" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Any Search :</label>
+                    <input type='text'
+                           name="AnySearch"
+                           class="form-control"                           
+                           ng-model="Filter.AnySearch" />
+                </div>
+            </div>
+            <hr class="style17" />            
+            <div class="col-md-12">
+                <div class="col-md-12" ng-include="'Templates/Common/Partial/Pagination.html'"></div>
+                <table class="table table-striped responsive" wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>Image</th> 
+                            <th>Date</th>        
+                            <th></th>
+                            <th></th>                                                              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in TeacherList">
+                            <td>{{item.UserName}}</td>
+                            <td>{{item.EmailID}}</td>
+                            <td>{{item.MobileNumber}}</td>
+                            <td>{{item.UserAddress}}</td>
+                            <td>
+                                <img ng-src="{{UserInfo.ImgPrefix}}{{item.ProfilePic==null?'ProfilePic/placeholderImage.png':item.ProfilePic}}"
+                                     class="img-circle" alt="Alternate Text" style="height:50px;width:50px;" />
+                            </td>
+                            <td>{{item.UpdationDate| date:'dd-MMM-yyyy hh:mm:ss a'}}</td>
+                            <td><button type="button" class="btn btn-default" ng-click="View(item.Id)">View</button></td>                           
+                            <td><a href="#"><i class="fa fa-remove" ng-click="Delete(item.Id)"></i></a></td>                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          
+          
+        </div>
+    </div>
+</form>

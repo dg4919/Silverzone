@@ -1,0 +1,199 @@
+﻿<style>
+    .model-large .modal-dialog {
+        width: 1000px;
+    }
+</style>
+
+<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/instant.png" class=" img-responsive" alt="silverzone" />
+        <!-- <div class="overlay"></div>
+         <div class="banner-content text-center">
+             <h2>Instant-Downloads</h2>
+             <p> download Past Year Question Paper </p>
+             <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Downloads</i></div>
+         </div>-->
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="pastyear" style="background:none;">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h1 class="heading bold"><span>instant download </span>Past Year Question Paper </h1>
+                <hr class="style17">
+            </div>
+            <div class="col-md-12" data-wow-delay="0.3s">
+                <img src="images/InstantDownload_Main.jpg" class="img-thumbnail" style="width:100%" alt="">
+            </div>
+            <div class="col-md-12" data-wow-delay="0.3s">
+                <p class="text-justify mar_top">
+                    Past Year Question Papers are available in PDF format for instant download. Each paper is available for download @Rs 75/-. This will help the aspirants to assess the pattern of the real examination paper, practice and prepare for cracking the top ranks.
+                </p>
+                <div class="text-left " style="font-size:14PX">
+                    If already purchased, to download
+                    <a ui-sref="InstantDownloads_login"
+                       class="btn gray">
+                        Click Here...
+                    </a>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>
+
+<section id="media" class="parallax-section">
+
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+
+                <form name="instantDnd_form"
+                      ng-submit="submit(instantDnd_form)"
+                      ng-validate="validationOptions">
+
+                    <div class="col-md-12">
+
+                        <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Class</th>
+                                        <th class="text-center">Year</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td style="padding-left:0px;">
+                                            <select class="form-control"
+                                                    ng-model="model.classId"
+                                                    name="clas"
+                                                    ng-options="::class.Id as ::class.className for class in jsonModel.classList">
+                                                <option value=""> ---- Select Class ---- </option>
+                                            </select>
+                                        </td>
+                                        <td style="padding-right:0px;">
+                                            <select class="form-control"
+                                                    ng-model="model.year"
+                                                    name="clas"
+                                                    ng-options="::previousYr.Id as ::previousYr.year for previousYr in jsonModel.previousYrQp">
+                                                <option value=""> ---- Select Year ---- </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                 
+                       <table class="table table-hover text-center"
+                              ng-if="eventInfo">
+
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Levels</th>
+                                        <th class="text-center col-sm-1"
+                                            ng-repeat="subject in jsonModel.subjectList"
+                                            ng-bind="subject.Name"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td><label value="LevelI">Level-I</label></td>
+                                        <td class="text-center col-sm-1"
+                                            ng-repeat="subject in eventInfo">
+                                            <input type="checkbox"
+                                                   ng-if="subject.Level1"
+                                                   ng-model="L1[subject.subjectId]"
+                                                   ng-change="onChange(L1[subject.subjectId], subject.subjectId, 1)" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label value="LevelI">Level-2</label></td>
+                                        <td class="text-center col-sm-1"
+                                            ng-repeat="subject in eventInfo">
+                                            <input type="checkbox"
+                                                   ng-if="subject.Level2"
+                                                   ng-model="L1[subject.subjectId]"
+                                                   ng-change="onChange(L1[subject.subjectId], subject.subjectId, 2)" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="row text-right"
+                                 style="margin-right: 2px;">
+                                <p> Total Amount : <b> {{ userInfo.amount }} </b></p>
+                            </div>
+                    </div>
+
+                    <div class="text-left">
+                        <div class="row container-fluid">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="firstname">Your Name </label>
+                                    <input type="text" name="uname" class="form-control" ng-model="userInfo.billing_name" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="text" name="email" class="form-control" ng-model="userInfo.billing_email" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phonenumber">Mobile Number</label>
+                                    <input type="text" name="Mobile" class="form-control" ng-model="userInfo.billing_tel" number:only />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phonenumber">Billing Address</label>
+                                    <textarea type="text" name="address" class="form-control" ng-model="userInfo.billing_address" y> </textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" name="city" class="form-control" ng-model="userInfo.billing_city" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Region</label>
+                                    <select name="state"
+                                            class="form-control"
+                                            ng-model="userInfo.billing_state"
+                                            ng-options="::state.StateName as ::state.StateName for state in jsonModel.stateList">
+                                        <option value="">Select State</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postcode">Pin Code</label>
+                                    <input type="text" name="postcode" class="form-control" ng-model="userInfo.billing_zip" number_only />
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select name="country"
+                                            class="form-control"
+                                            ng-model="userInfo.billing_country"
+                                            ng-options="::country.code as ::country.name for country in countrys">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                                <button class="btn gray pull-right " type="submit">Confirm</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>

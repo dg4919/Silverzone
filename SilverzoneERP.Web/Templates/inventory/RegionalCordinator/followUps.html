@@ -1,0 +1,50 @@
+﻿<style>
+    .form-group .form-control1.has-error {
+        border: 1px solid #dd4b39;
+    }
+</style>
+
+
+<section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+<div class="sz_card">
+
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            Upcoming Fllowups
+        </div>
+    </div>
+
+    <div ng-if="!floowUps.length"
+         class="text-success"
+         style="padding: 22px;">
+        <h3>You have no follow ups :)</h3>
+    </div>
+
+    <table ng-if="floowUps.length"
+           class="table table-striped responsive"
+           wt-responsive-table>
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>School Name</th>
+                <th>Event</th>
+                <th>Contact Person Name</th>
+                <th>Contact Person Mobile</th>
+                <th>FollowUp Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="floowUp in floowUps">
+                <td>{{ $index+1 }}</td>
+                <td ng-bind="::floowUp.SchName"></td>
+                <td ng-bind="::floowUp.EventName"></td>
+                <td ng-bind="::floowUp.Contact_Peron_Name"></td>
+                <td ng-bind="::floowUp.Contact_Peron_Mobile"></td>
+                <td ng-bind="::floowUp.FoolowUpDate | dateFormat: 'DD/MM/YYYY hh:mm a'"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,41 @@
+﻿
+<div class="form-group col-md-3">
+    <label>Date From:</label>
+    <input type='text'
+           name="DateFrom"
+           class="form-control"
+           payment-date-picker
+           ng-model="Filter.DateFrom" />
+</div>
+
+<div class="form-group col-md-3">
+    <label>Date To:</label>
+    <input type='text'
+           name="DateTo"
+           class="form-control"
+           payment-date-picker
+           ng-model="Filter.DateTo" />
+</div>
+
+<div class="form-group col-md-2">
+    <label>Event Code:</label>
+    <select class="form-control"
+            name="EventId"
+            ng-model="Filter.EventId"
+            ng-options="obj.EventId as obj.EventCode for obj in EventInfo">
+        <option value="">--------Event--------</option>
+    </select>
+</div>
+
+<div class="form-group col-md-3">
+    <label>User Name:</label>
+    <select class="form-control"
+            name="UserId"
+            ng-model="Filter.UserId"
+            ng-options="obj.UserId as obj.UserName for obj in UserList">
+        <option value="">------------User Name------------</option>
+    </select>
+</div>
+<div class="col-md-1" style="margin-top:25px;">
+    <button type="submit" class="form-control">Find</button>
+</div>

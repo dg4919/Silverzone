@@ -1,0 +1,65 @@
+﻿<div class="col-item">
+    <!--<span>{{book}}</span>-->
+
+    <a ui-sref="book_details({bookId : book.BookId, bookTitle : (book.book_title | stringFilter) })"
+       class="post-img-content"
+       style="display: block;">
+
+        <p style="position: absolute; z-index: 10; font-size: 18px; font-weight: 600; right: 18px; margin-top: 20px; width: 30px;"
+           ng-bind="book.classId">
+        </p>
+        <img ng-src="{{ book.BookImage }}" class="img-responsive " />
+        <span class="post-title text-left">
+            <b>{{ book.Subject }}</b><br>
+        </span>
+
+        <span ng-if="book.In_stock && book.CouponInfo">
+            <div class="round-tag"
+                 ng-if="book.CouponInfo.couponType === 1 && book.In_stock">
+                <i class="fa fa-inr"></i> {{ ::book.CouponInfo.couponPrice }}
+            </div>
+            
+            <div class="round-tag"
+                 ng-if="book.CouponInfo.couponType === 2 && book.In_stock">
+                {{ ::book.CouponInfo.couponPrice }}%
+            </div>
+            
+        </span>
+        <div class="round-tag1"
+             ng-if="!book.In_stock">
+            Out Of Stock
+        </div>
+
+    </a>
+    <div class="info">
+        <div class="row">
+            <div class="price col-md-12">
+                <h5> {{ ::book.book_title }}</h5>
+                <h5 class="price-text-color">
+                    <i class="fa fa-inr" aria-hidden="true"></i>
+                    <a> {{ book.CouponInfo ? book.CouponInfo.book_newPrice : book.Price }} </a>
+                </h5>
+            </div>
+
+        </div>
+        <div class="separator clear-left">
+            <p class="btn-add">
+                <i class="fa fa-shopping-cart"></i>
+                <a href="#" 
+                   ng-style="$root.buyBook_isDisable[book.BookId] && { 'cursor': 'no-drop' }"
+                   ng-click="!$root.buyBook_isDisable[book.BookId] && book.In_stock && addtoCart(book)"
+                   ng-disabled="$root.buyBook_isDisable[book.BookId] || !book.In_stock"
+                   ng-bind="$root.buyBook_isDisable[book.BookId] ? 'Added' : 'Buy Now'">
+                </a>
+            </p>
+            <p class="btn-details">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <a ui-sref="book_details({bookId : book.BookId, bookTitle : (book.book_title | stringFilter) })">
+                    Details
+                </a>
+            </p>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+</div>

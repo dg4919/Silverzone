@@ -1,0 +1,13 @@
+﻿<div class="pull-left">  
+    <strong>Teacher</strong>
+</div>
+
+<div class="pull-right">
+    <select ng-model="Filter.IsTeacherApp">
+        <option value="1">By App</option>
+        <option value="0">Other</option>
+    </select>
+    <span ng-include="'Templates/Common/Partial/Active_InActive_Filter.html'"></span>
+    <button type="submit" class="btn btn-default">Search</button>
+</div>
+

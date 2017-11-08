@@ -1,0 +1,37 @@
+﻿
+<form name="frm" ng-submit="frm.$valid && Submit()">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <!--Start Create Section-->
+        <div ng-show="isEdit">
+            <div class="row" ng-if="UserPermissionList.length!=0">
+                <div class="col-lg-12"
+                     ng-include="'/Templates/School/User/UserPermissionList_Partial.html'">
+                </div>
+            </div>
+        </div>
+        <!--End Create Section-->
+        <!--Start List Section-->
+        <div ng-hide="isEdit">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-1">User:</label>
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    ng-disabled="isDisable"
+                                    ng-model="UserPermission.UserId"
+                                    ng-options="obj.Id as obj.UserName for obj in UserList"
+                                    ng-change="selectedItemChange(UserPermission.UserId)">
+                                <option value="">Select User</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End List Section-->
+    </div>
+</form>

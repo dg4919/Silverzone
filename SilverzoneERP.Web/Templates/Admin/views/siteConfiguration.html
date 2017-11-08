@@ -1,0 +1,66 @@
+﻿<section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-9">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Site Configuration</h3>
+                </div>
+
+                <form name="siteConfigForm"
+                      class="form-horizontal"
+                      ng-submit="submit_data(siteConfigForm)"
+                      ng-validate="validationOptions"
+                      novalidate="novalidate"
+                      style="padding-top: 25px;">
+
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">India First Book Shipping Charges</label>
+                                <input type="text" class="form-control" ng-model="model.India_bookShiping_Charges1" name="India_bookShiping_Charges1">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label class="control-label">India other Book Shipping Charges</label>
+                                <input type="text" class="form-control" ng-model="model.India_bookShiping_Charges2" name="India_bookShiping_Charges2">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">Outside India First Book Shipping Charges</label>
+                                <input type="text" class="form-control" ng-model="model.OutsideIndia_bookShiping_Charges1" name="OutsideIndia_bookShiping_Charges1">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label class="control-label">Outside India Other Book Shipping Charges</label>
+                                <input type="text" class="form-control" ng-model="model.OutsideIndia_bookShiping_Charges2" name="OutsideIndia_bookShiping_Charges2">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">Instant Download Price</label>
+                                <input type="text" class="form-control" ng-model="model.InstantDnd_Price" name="InstantDnd_Price">
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer">
+                        <div class="row">
+                            <button type="submit" class="btn btn-info pull-right">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,299 @@
+﻿<style>
+    input.hidden {
+        position: absolute;
+        left: -9999px;
+    }
+
+    #profile-image1 {
+        cursor: pointer;
+        width: 130px;
+        height: 130px;
+        border: 2px solid #ddd;
+    }
+
+    .tital {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .bot-border {
+        border-bottom: 1px #ddd solid;
+        margin: 3px 0 2px 0;
+    }
+     .form-group {
+    margin-bottom: 5px;
+}
+</style>
+<div class="container-fluid">
+    <form name="frm"
+          ng-submit="SignUp(frm)"
+          ng-validate="validationSignUp"
+          novalidate="novalidate">
+        
+            <div class="row" style="background:url(images/wbg.jpg) repeat;">
+                <div class="col-md-12 text-center" style="margin-top:10px;">
+                    <h2>Sign Up</h2>                    
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="col-md-6">                        
+                        <img alt="User Pic" src="images/teachers.png"  class="img-responsive">
+                    </div>
+                    <div class="col-md-6">                       
+                        <div class="form-group col-md-12">
+                            <a href="#"
+                               class="pull-right"
+                               ng-click="Action(true,false,false)">
+                                <i class="fa fa-remove"></i>
+                            </a>
+                            <div align="center">
+                                <img alt="User Pic" ng-src="{{TeacherReg.ProfilePic}}" id="profile-image1" class="img-circle img-responsive">
+                                <input type="file" accept=".png,.jpg,.jpeg" ng-file-select="onFileSelect($files)" />
+                            </div>
+                           
+                            <div class="form-group col-md-12">
+                                <label><i class="fa fa-user"></i> Name :</label>
+                                <input type="text"
+                                       name="UserName"
+                                       class="form-control"
+                                       ng-model="TeacherReg.UserName"
+                                       autofocus />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label><i class="fa fa-mobile-phone"></i> Mobile No. :</label>
+                                <input type="text"
+                                       name="MobileNumber"
+                                       ng-model="TeacherReg.MobileNumber"
+                                       class="form-control"
+                                       only-numbers />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Gender:</label>
+                                <select ng-model="TeacherReg.GenderType" class="form-control">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                              <div class="form-group col-md-4">
+                                <label>Date of Birth :</label>
+                                <input type='text'
+                                       name="DOB"
+                                       class="form-control"
+                                       show-picker
+                                       ng-model="TeacherReg.DOB" />
+                            </div>
+                                                      
+                            <div class="form-group col-md-12">
+                                <label><i class="fa fa-envelope"></i> Email:</label>
+                                <input type="email"
+                                       name="EmailID"
+                                       class="form-control"
+                                       ng-model="TeacherReg.EmailID" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Password :</label>
+                                <input type="password"
+                                       name="Password"
+                                       class="form-control"
+                                       ng-model="TeacherReg.Password" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Confirm-Password :</label>
+                                <input type="password"
+                                       class="form-control"
+                                       name="ConfirmPassword"
+                                       ng-model="TeacherReg.ConfirmPassword"
+                                       password-match="TeacherReg.Password" />
+                                <span ng-if='frm.ConfirmPassword.$error.unique'
+                                      class="error">
+                                    Passwords don't match.!
+                                </span>
+                            </div>
+
+                            <div class="form-group col-md-6" ng-if="RoleName == 'regional coordinator'">
+                                <label><i class="fa fa-graduation-cap"></i> Qualification :</label>
+                                <input type="text"
+                                       name="Qualification"
+                                       ng-model="TeacherReg.Qualification"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group col-md-6" ng-if="RoleName == 'regional coordinator'">
+                                <label><i class="fa fa-graduation-cap"></i> Other Qualification :</label>
+                                <input type="text"
+                                       name="OtherQualification"
+                                       ng-model="TeacherReg.OtherQualification"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group col-md-6" ng-if="RoleName == 'regional coordinator'">
+                                <label>Profession :</label>
+                                <input type="text"
+                                       name="Profession"
+                                       ng-model="TeacherReg.Profession"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group col-md-6" ng-if="RoleName == 'regional coordinator'">
+                                <label> How did you know ?</label>
+                                <input type="text"
+                                       name="HowDid"
+                                       ng-model="TeacherReg.HowDid"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Address :</label>
+                                <textarea name="UserAddress"
+                                          class="form-control"
+                                          ng-model="TeacherReg.UserAddress"></textarea>
+                            </div>
+
+                            <hr>
+                            <div class="col-md-12">
+                                <input type="submit"
+                                       class="btn btn-lg btn-primary btn-block"
+                                       value="Next">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>        
+    </form>    
+</div>
+
+<!--<div class="row">
+        <div class="col-md-7">
+            <img src="images/teacher.png" class="img-responsive">
+        </div>
+
+        <div class="col-md-5">
+            <div class="row" style="margin-top:20px;margin-right:20px;">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 ">
+
+                    <form name="frm"
+                          ng-submit="SignUp(frm)"
+                          ng-validate="validationSignUp"
+                          novalidate="novalidate">
+
+                        <fieldset>
+                            <a href="#"
+                               class="pull-right"
+                               ng-click="Action(true,false,false)">
+                                <i class="fa fa-remove"></i>
+                            </a>
+                            <h2>Sign Up</h2>
+                            <hr>
+                            <div class="form-group">
+                                <label><i class="fa fa-user"></i> Name :</label>
+                                <input type="text"
+                                       name="UserName"
+                                       class="form-control"
+                                       ng-model="TeacherReg.UserName"
+                                       autofocus />
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth :</label>
+                                <input type='text'
+                                       name="DOB"
+                                       class="form-control"
+                                       show-picker
+                                       ng-model="TeacherReg.DOB" />
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-envelope"></i> Email:</label>
+                                <input type="email"
+                                       name="EmailID"
+                                       class="form-control"
+                                       ng-model="TeacherReg.EmailID" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <select ng-model="TeacherReg.GenderType" class="form-control">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Password :</label>
+                                <input type="password"
+                                       name="Password"
+                                       class="form-control"
+                                       ng-model="TeacherReg.Password" />
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm-Password :</label>
+                                <input type="password"
+                                       class="form-control"
+                                       name="ConfirmPassword"
+                                       ng-model="TeacherReg.ConfirmPassword"
+                                       password-match="TeacherReg.Password" />
+                                <span ng-if='frm.ConfirmPassword.$error.unique'
+                                      class="error">
+                                    Passwords don't match.!
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label>Address :</label>
+                                <textarea name="UserAddress"
+                                          class="form-control"
+                                          ng-model="TeacherReg.UserAddress"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-mobile-phone"></i> Mobile No. :</label>
+                                <input type="text"
+                                       name="MobileNumber"
+                                       ng-model="TeacherReg.MobileNumber"
+                                       class="form-control"
+                                       only-numbers />
+                            </div>
+
+                            <div class="form-group" ng-if="RoleName == 'regional coordinator'">
+                                <label><i class="fa fa-graduation-cap"></i> Qualification :</label>
+                                <input type="text"
+                                       name="Qualification"
+                                       ng-model="TeacherReg.Qualification"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group" ng-if="RoleName == 'regional coordinator'">
+                                <label><i class="fa fa-graduation-cap"></i> Other Qualification :</label>
+                                <input type="text"
+                                       name="OtherQualification"
+                                       ng-model="TeacherReg.OtherQualification"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group" ng-if="RoleName == 'regional coordinator'">
+                                <label>Profession :</label>
+                                <input type="text"
+                                       name="Profession"
+                                       ng-model="TeacherReg.Profession"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group" ng-if="RoleName == 'regional coordinator'">
+                                <label> How did you know ?</label>
+                                <input type="text"
+                                       name="HowDid"
+                                       ng-model="TeacherReg.HowDid"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Image:</label>
+                                <div class="col-sm-8">
+                                    <img ng-src="{{TeacherReg.ProfilePic}}" class="img-thumbnail" alt="Alternate Text" style="height:100px;width:80px;" />
+                                    <input type="file" accept=".png,.jpg,.jpeg" ng-file-select="onFileSelect($files)" />
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <input type="submit"
+                                           class="btn btn-lg btn-primary btn-block"
+                                           value="Next">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>-->

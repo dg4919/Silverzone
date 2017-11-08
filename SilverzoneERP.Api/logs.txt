@@ -1,0 +1,100 @@
+
+Log: 
+02/02/2017 17:53:07
+Error Message:System.Exception: Image File Log
+Message = 960-jeff-bezos-really-wants-amazoncom-to-snag-an-oscar.jpg
+
+Log: 
+03/30/2017 16:07:52
+Error Message:System.Exception: Image File Log
+Message = DL.jpg
+
+Log: 
+03/30/2017 16:08:14
+Error Message:System.Exception: Image File Log
+Message = 16795428_154836248359440_885406919659880448_n.mp4
+
+Log: 
+03/30/2017 16:08:27
+Error Message:System.Exception: Image File Log
+Message = Learning is a treasure that will follow its owner everywhere..png
+
+Log: 
+03/31/2017 10:20:49
+Error Message:System.Exception: Image File Log
+Message = 16795428_154836248359440_885406919659880448_n.mp4
+
+Log: 
+03/31/2017 10:21:00
+Error Message:System.Exception: Image File Log
+Message = Learning is a treasure that will follow its owner everywhere..png
+
+Log: 
+03/31/2017 11:03:48
+Error Message:System.Exception: Image File Log
+Message = 17098431_10155058353462498_3600108704559586742_n.png
+
+Log: 
+05/03/2017 15:15:08
+Error Message:System.Exception: Image File Log
+Message = 15844287_1204145146359984_8908751767798456619_o.jpg
+
+Log: 
+09/11/2017 15:52:48
+Error Message:System.Exception: Image File Log
+Message = dhar 1.jpg
+
+Log: 
+09/11/2017 15:52:53
+Error Message:System.Exception: Image File Log
+Message = dhar 2.jpg
+
+Log: 
+09/12/2017 10:22:47
+Error Message:System.Exception: Image File Log
+Message = dhar 1.jpg
+
+Log: 
+09/22/2017 11:02:58
+Error Message:System.Exception: Image File Log
+Message = allahabadexpress.jpg
+
+Log: 
+10/09/2017 10:09:22
+Error Message:System.Exception: Image File Log
+Message = Hall of Fame.jpg
+
+Log: 
+10/18/2017 12:28:01
+Error Message:System.Exception: Image File Log
+Message = 22449889_1486685161418746_509868819941806365_n.jpg
+
+Log: 
+10/18/2017 12:30:58
+Error Message:System.Exception: Image File Log
+Message = 22279872_1478605715560024_1370336203926401315_n.jpg
+
+Log: 
+10/23/2017 11:07:04
+Error Message:System.Exception: Image File Log
+Message = 22221572_1475726382514624_6209227627410442811_n.jpg
+
+Log: 
+10/23/2017 11:10:21
+Error Message:System.Exception: Image File Log
+Message = 22221572_1475726382514624_6209227627410442811_n.jpg
+
+Log: 
+10/23/2017 11:45:35
+Error Message:System.Exception: Image File Log
+Message = 22449889_1486685161418746_509868819941806365_n.jpg
+
+Log: 
+10/23/2017 11:46:03
+Error Message:System.Exception: Image File Log
+Message = 22448570_1485768474843748_5511894673196076032_n.jpg
+
+Log: 
+10/23/2017 11:46:40
+Error Message:System.Exception: Image File Log
+Message = 22528471_1489551094465486_4775880217803326908_n.jpg

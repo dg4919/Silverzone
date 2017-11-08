@@ -1,0 +1,47 @@
+﻿<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="col-md-7">
+            <img src="images/teacher.png" class="img-responsive">
+        </div>
+
+        <div class="col-md-5">
+            <div class="row" style="margin-top:20px">
+
+                <div class="col-md-12 ">
+
+                    <form name="frm"
+                          ng-submit="VerifyOTP(frm)"
+                          ng-validate="validationVerifyOTP"
+                          novalidate="novalidate">
+
+                        <fieldset>
+                            <a href="#"
+                               class="pull-right"
+                               ng-click="Action(false,true,false)">
+                                <i class="fa fa-remove"></i>
+                            </a>
+                            <h2>Verify OTP</h2>
+                            <hr>
+                            <div class="form-group">
+                                <label>OTP :</label>
+                                <input type="text"
+                                       name="OTP"
+                                       class="form-control"
+                                       ng-model="OTPObj.OTP"
+                                       autofocus />                             
+                            </div>                          
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <input type="submit"
+                                           class="btn btn-lg btn-primary btn-block"
+                                           value="Submit">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

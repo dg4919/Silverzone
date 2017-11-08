@@ -1,0 +1,32 @@
+﻿<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <div class="modal-content">
+        <div class="modal-header sz_section row">
+            <div class="col-md-4">
+                <a href="#"
+                   ng-click="Back()"
+                   style="color:white;">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <strong>Book Order</strong>
+            </div>
+            <div class="col-md-4 text-center">
+                <strong>{{SchoolDetail.SchoolName}}</strong>
+            </div>
+            <div class="col-md-4">
+                <button type="submit"
+                        class="pull-right btn btn-default">
+                    <i class="fa fa-saved"></i> <strong>Done</strong>
+                </button>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="row" ng-include="'Templates/School/EventManagement/Partial/BookOrder.html'"></div>
+        </div>
+    </div>
+</form>
+

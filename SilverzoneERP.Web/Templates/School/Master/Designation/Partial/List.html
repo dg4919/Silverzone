@@ -1,0 +1,26 @@
+﻿<div class="col-md-12">
+    <table class="table table-striped responsive" wt-responsive-table>
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Designation Name</th>
+                <th>Designation Description</th>
+                <th ng-if="Permission.Edit">Edit</th>
+                <th ng-if="Permission.Edit">IsActive</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in DesignationList">
+                <td>{{$index+1}}</td>
+                <td>{{data.DesgName}}</td>
+                <td>{{data.DesgDescription}}</td>
+                <td ng-if="Permission.Edit">
+                    <a href="#" ng-click="Edit(data)"> <i class="fa fa-pencil"></i></a>
+                </td>
+                <td ng-if="Permission.Edit">
+                    <input type="checkbox" ng-model="data.Status" ng-change="IsActive(data.Id)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

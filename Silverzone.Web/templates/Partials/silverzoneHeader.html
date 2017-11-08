@@ -1,0 +1,417 @@
+﻿<script>
+/*** Document Ready Functions ***/
+jQuery(document).ready(function(){
+
+/*** Side Panel Functions ***/
+$(".panel-icon").click(function(){
+	$(".side-panel").toggleClass("show");
+});	
+
+$(".panel-icon_left").click(function(){
+	$(".side-panel_left").toggleClass("showw");
+});	
+});		
+</script>
+
+<div class="side-panel hidden-xs">
+	<div class="panel-icon"><p>International Excursions </p></div>
+    <h6>International Excursions</h6>
+    <hr class="style17">
+
+<div class="layout-buttons">
+		<a  ui-sref="excersions({subjectName: 'nasa'})" title="silverzone">Nasa (U.S.A)</a>
+		<a  ui-sref="excersions({subjectName: 'landon'})" title="silverzone">London (U.K)</a>
+        <a  ui-sref="excersions({subjectName: 'disney'})" title="silverzone">Disneyland (Hongkong)</a>
+        <a  ui-sref="excersions({subjectName: 'france'})" title="silverzone">France</a>
+        <a  ui-sref="excersions({subjectName: 'singapore'})" title="silverzone">Singapore/ Malaysia</a>
+	</div>
+	
+</div><!-- Side Panel -->
+
+<div class="side-panel_left hidden-xs">
+
+	<div class="panel-icon_left"><p>Our Partners </p></div>
+   <div class="layout-buttons" >
+		<a style="cursor:default"><img src="images/asso2.png" class="img-responsive img-thumbnail" alt="silverzone"></a>
+		<a style="cursor:default"><img src="images/asso3.png" class="img-responsive img-thumbnail" alt="silverzone"></a>
+        <a style="cursor:default"><img src="images/asso4.png" class="img-responsive img-thumbnail" alt="silverzone"></a>
+        <a style="cursor:default"><img src="images/pecific.png" class="img-responsive img-thumbnail" alt="silverzone"></a>
+     
+	</div>
+	
+</div><!-- Side Panel_left -->
+
+<div class="enq">
+    <div class="toggle-bar-btn fade-toggle hidden-phone"
+         ng-click="open_EnquiryForm()" >
+        <span class="ts-infobar infobar-down" style="cursor:pointer"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="top-bar">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="col-md-6">
+                    <!-- Start Contact Info -->
+                    <ul class="contact-details">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-mobile"></i> +91 11 2616 6210,1,2
+                            </a>
+                        </li>
+                        <li><a href="mailto:info@silverzone.org"><i class="fa fa-envelope"></i> info@silverzone.org</a></li>
+                    </ul>
+                    <!-- End Contact Info -->
+                </div>
+                <div class="col-md-6 ">
+                    <!-- Start Social Links -->
+                    <ul class="social-list">
+                        <li>
+                            <a class="facebook sh-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/Olympiads.Asia/" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a class="twitter sh-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/SZOlympiads" target="_blank"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a class="google sh-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/103171723169318154454" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li>
+                            <a class="linkdin sh-tooltip" data-placement="bottom" title="Linkedin" href="https://www.linkedin.com/in/silverzone-foundation-042a77128/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a class="dribbble sh-tooltip" data-placement="bottom" title="YouTube" href="https://www.youtube.com/channel/UCVb34obnlNSQh8-vySH0Ssw" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </li>
+                    </ul>
+                    <!-- End Social Links -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="navbar navbar-fixed-top custom-navbar" role="navigation">
+    <div class="row smenu " id="smenu">
+        <div class="col-md-3 nav-side-menu">
+            <div class="menu-list">
+                <ul id="menu-content" class="menu-content">
+                   <!-- <li>
+                        <a href="#">
+                            <i class="fa fa-dashboard fa-lg"></i> Menu
+                        </a>
+                    </li>-->
+                    <li>
+                        <a ui-sref="silverzone_home">
+                            <i class="fa fa-home fa-lg"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.silverzone.info/freelance" target="_blank">
+                            <i class="fa fa-send fa-lg"></i> Become Co-ordinator
+                        </a>
+                    </li>
+                    <li>
+                    <li data-toggle="collapse" data-target="#products" onClick="Menu('products')" id="LeftProducts" class="collapsed active">
+                        <a href="#"><i class="fa fa-gift fa-lg"></i> Olympiads <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li class="active"><a ui-sref="aboutSubject({subjectName: 'iio'})">iIO(Informatics Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'iom'})">iOM(Mathematics Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'ios'})">iOS(Science Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'ioel'})">iOEL(English Language Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'iflo'})">iFLO(French Language Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'abho'})">ABHO(Hindi Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'skgko'})">SKGKO(GK Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'itho'})">iTHO(Talent Hunt Olympiad)</a></li>
+                        <li><a ui-sref="aboutSubject({subjectName: 'isso'})">iSSO(Social Studies Olympiad)</a></li>
+                         <li><a ui-sref="aboutSubject({subjectName: 'irao'})">iRAO( Reasoning and Aptitude)</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#service" onClick="Menu('service')" class="collapsed">
+                        <a href="#"><i class="fa fa-trophy fa-lg"></i> International Excursions <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="service">
+                        <li><a ui-sref="excersions({subjectName: 'nasa'})">Nasa  (U.S.A)</a></li>
+                        <li><a ui-sref="excersions({subjectName: 'landon'})">London (U.K)</a></li>
+                        <li><a ui-sref="excersions({subjectName: 'disney'})">Disneyland (Hongkong)</a></li>
+                        <li><a ui-sref="excersions({subjectName: 'france'})">France</a></li>
+                        <li><a ui-sref="excersions({subjectName: 'singapore'})">Singapore/ Malaysia</a></li>
+                    </ul>
+
+
+                    <li data-toggle="collapse" data-target="#reward" onClick="Menu('reward')" class="collapsed">
+                        <a href="#"><i class="fa fa-trophy fa-lg"></i> Silverzone Initiatives <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="reward">
+                        <li><a ui-sref="girlChild">Girl Child Promotion</a></li>
+                        <li><a ui-sref="award">Excellence Award</a></li>
+
+                    </ul>
+
+
+                    <li>
+                        <a ui-sref="downloads">
+                            <i class="fa fa-download fa-lg"></i> Download
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="media">
+                            <i class="fa fa-bullhorn fa-lg"></i> Media
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="gallery_List">
+                            <i class="fa fa-photo fa-lg"></i> Gallery
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div style="margin-top:10px;margin-left:10px;float:right;">
+            <button class="navbar-toggle" style="margin-top:0px;" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-header">
+            <div style="padding-left:10px;padding-top:0px;">
+                <span class="navbarBtn bwsprite nav-icon" style="margin-right:10px;" id="slide-submenu"></span>
+                <a href="index.html" id="bwheader-logo" class="bw-logo" title="Silverzone" alt="Silverzone"><img src="images/sm-logo.png" /></a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a ui-sref="silverzone_home">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Download App<span class="caret"></span></a>
+                    <ul class="dropdown-menu dow">
+                        <div class="container-fluid">
+                            <div class="col-md-6">
+                                <li>
+                                    <a href="#" target="_blank" style="background:none;">
+                                      <!--  <h4> Student App:</h4>-->
+                                        <img src="images/StudentApp.png" class="img-responsive">
+                                    </a>
+                                    <p>
+                                        <a href="https://play.google.com/store/apps/details?id=com.webshuttle.silverzoneolympiad" target="_blank" style="background:none;"><img src="images/android.png"  style="padding-left:4px;padding-right:4px" class="pull-left img-responsive col-md-6" /></a>
+                                        <a href="https://itunes.apple.com/in/app/silverzone-olympiad-tutor/id1071051104?mt=8" target="_blank" style="background:none;margin-top:-15px;"><img src="images/ios.png" style="padding-left:4px;padding-right:4px"  class="pull-right img-responsive col-md-6" /></a>
+                                    </p>
+                                </li>
+                            </div>
+                            <div class="col-md-6">
+                                <li>
+                                    <a href="#" target="_blank" style="background:none;">
+
+                                        <!--<h4> Teacher App:</h4>-->
+                                        <img src="images/TeacherApp.png" class="img-responsive">
+                                    </a>
+                                    <p>
+
+                                        <a href="https://play.google.com/store/apps/details?id=com.silverzoneteacher" target="_blank" style="background:none;"><img src="images/android.png" style="padding-left:4px;padding-right:4px"  class="pull-right img-responsive col-md-6" /></a>
+                                    </p>
+                                </li>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick Links<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="menu-item current-menu-item page_item"><a ui-sref="InstantDownloads"><i class="fa fa-pagelines"></i>Instant Downloads: Question Papers (PDF)</a></li>
+                         <li class="menu-item"><a ui-sref="downloads"><i class="fa fa-download" ></i>Downloads: For School Only</a></li>
+                          <li class="menu-item"> <a href="http://www.silverzone.info/freelance" target="_blank"><i class="fa fa-send " ></i>Become Co-ordinator </a></li>
+                            <li> <a ui-sref="resultRequest"><i class="fa fa-file-text-o" ></i>My Result : Enroll for notification</a></li>
+                        <li class="menu-item"><a ui-sref="results"><i class="fa fa-file-text-o " ></i>Result Declaration </a></li>
+                         <li class="menu-item"><a ui-sref="career"><i class="fa fa-line-chart " ></i>Career </a></li>
+                        <li class="menu-item"><a ui-sref="contactUs"><i class="fa fa-phone" ></i> Contact Us</a></li>
+                         </ul></li>
+                         <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Olympiads<span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="width:410px;">
+                        <li class="menu-item current-menu-item page_item"><a ui-sref="aboutSubject({subjectName: 'iio'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Informatics Olympiad (iiO)</a></li>
+                         <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'iom'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Olympiad of Mathematics  (iOM)</a></li>
+                         <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'ios'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Olympiad of Science  (iOS)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'ioel'})"> <i class="fa fa-trophy" aria-hidden="true"></i>
+International Olympiad of English Language  (iOEL)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'iflo'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International French Language Olympiad (iFLO)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'abho'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+Akhil Bhartiya Hindi Olympiad (ABHO)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'skgko'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+Smart Kid General Knowledge Olympiad (SKGKO)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'itho'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Talent Hunt Olympiad (iTHO)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'isso'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Social Studies Olympiad (iSSO)</a></li>
+                        <li class="menu-item"><a ui-sref="aboutSubject({subjectName: 'irao'})"><i class="fa fa-trophy" aria-hidden="true"></i>
+International Reasoning and Aptitude Olympiad (iRAO)</a></li>
+                         </ul></li>
+                         
+                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">More Links<span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="min-width:290px;">
+                       <!-- <li class="menu-item current-menu-item page_item"><a ui-sref=""><i class="fa fa-pagelines"></i>  </a></li>-->
+                       <li class="menu-item"><a ui-sref="registerSchool"><i class="fa fa-plus"></i>Add your school</a></li>
+                        <li class="menu-item"><a ui-sref="subscribeUpdates"><i class="fa fa-refresh"></i>Subscribe for updates</a></li>
+                        <li class="menu-item"><a ui-sref="girlChild"><i class="fa fa-female"></i>Girl Child Promotion</a></li>
+                        <li class="menu-item"><a ui-sref="award"> <i class="fa fa-trophy"></i>Excellence Award</a></li>
+                      <!--   <li class="menu-item"><a ui-sref="associates"><i class="fa fa-handshake-o"></i> Our Associates</a></li>-->
+                         <li> <a ui-sref="gallery_List"><i class="fa fa-photo "></i>Gallery</a></li>
+                          <li> <a ui-sref="media"><i class="fa fa-bullhorn "></i>Media</a></li>
+                        
+                    </ul>
+                </li>
+                <li><a ui-sref="book_list">Buy Books&nbsp; <!--<i class="fa fa-book"></i>--></a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"
+                    ng-controller="cartDetailsController as cartDetail">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        item&nbsp;<i class="fa fa-shopping-cart"></i>
+                        ({{ (!Newshopping && cart.Items.length) || 0 }})
+                    </a>
+
+                    <ul class="dropdown-menu"
+                        ng-if="(cart.Items.length > 0) && (!show_cartDetail_popUp())"
+                        style="background: #fff !important; margin-left: -120px; padding: 5px;">
+
+                        <div id="cartItemsContainer"
+                             ng-scrollbars
+                             style="max-height: 350px;">
+                            <li style="border-bottom: 1px solid #6f4242;display: table;padding: 10px 0px 10px 0px;"
+                                ng-repeat="item in cart.Items track by $index">
+                                <div class="col-sm-3">
+                                    <a ui-sref="book_details({bookId : item.bookId, bookTitle : (item.bookTitle | stringFilter) })"
+                                       ng-if="item.bookType === 1"
+                                       class="thumbnail" style="padding: 5px !important;">
+                                        <img ng-src="{{ item.bookImage}}" class="img-responsive" style="margin: 0 auto;height: 50px;width: 42px;">
+                                    </a>
+
+                                    <a show-Bundle:Modal bundleId="{{item.bookId}}"
+                                       ng-if="item.bookType === 2"
+                                       class="thumbnail" style="padding: 5px !important;">
+                                        <img ng-src="{{ item.bookImage }}" class="img-responsive" style="margin: 0 auto;height: 50px;width: 42px;">
+                                    </a>
+                                </div>
+
+                                <form style="margin-top: 12px;">
+
+                                    <div class="col-sm-7" style="padding: 0 !important; display: table;table-layout: fixed;">
+
+                                        <!-----  For Book  ----->
+                                        <h5 style="color: #848484; font-size: 0.9em; margin: 2px !important; cursor:pointer;" ng-bind="item.bookTitle"
+                                            ng-style="isHover" ng-mouseover="isHover = {'color': '#458ecc'}" ng-mouseleave="isHover = {'color': '#848484'}"
+                                            ng-click="goto_bookDetail(item.bookId)"
+                                            ng-if="item.bookType === 1"></h5>
+
+                                        <!-----  For Bundle  ----->
+                                        <h5 style="color: #848484; font-size: 0.9em; margin: 2px !important; cursor:pointer;" ng-bind="item.bookTitle"
+                                            ng-style="isHover" ng-mouseover="isHover = {'color': '#458ecc'}" ng-mouseleave="isHover = {'color': '#848484'}"
+                                            show-Bundle:Modal bundleId="{{item.bookId}}"
+                                            ng-if="item.bookType === 2"></h5>
+
+                                        <!--  if condison true then only ng-style will apply otherwise or condison  -->
+
+                                        <button class="btn btn-default btn-guests btn-guests-plus btn-sm" style="font-size: 7px !important;" ng-click="cartDetail.addCartqty(false, $index)">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                                <i class="fa fa-minus fa-stack-1x"></i>
+                                            </span>
+                                        </button>
+                                        <input type="text" id="book_cart_count" style="width: 60px;text-align: center;" maxlength="2" ng-model="item.bookQty" ng-keyup="cartDetail.updateQty($index)">
+                                        <button class="btn btn-default btn-guests btn-guests-minus btn-sm" style="font-size: 7px !important;" ng-click="cartDetail.addCartqty(true, $index)">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                                <i class="fa fa-plus fa-stack-1x"></i>
+                                            </span>
+                                        </button>
+
+                                    </div>
+                                    <div class="col-sm-2" style="padding: 0; text-align:center;">
+                                        <p style="color: #151515;"><i class="fa fa-inr"></i> {{ item.bookTotalPrice | number : 2 }} </p>
+                                        <p><i class="fa fa-trash" ng-click="cartDetail.removeItem($index)" style="cursor: pointer;color: #00B9F5!important;"></i></p>
+                                    </div>
+                                </form>
+
+                            </li>
+                        </div>
+
+                        <div class="row col-md-offset-2" style="margin: 0 auto; padding: 8px;">
+                            <input type="button" class="btn gray col-md-12" value="Proceed" ng-click="cartDetail.cart_proceedModal()">
+                        </div>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                       ng-click="!user.is_login && Show_signInModal()">
+
+                        <img ng-src="{{ user.currentUser.ProfilePic || '/Images/profile-img.jpg' }}"
+                             ng-if="user.is_login"
+                             class="img-responsive img-circle"
+                             style="width: 18px; height: 18px; display: inline-block;">
+
+                        {{ user.is_login ? user.currentUser.UserName || 'My Account' : 'Login' }}
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-block" role="menu" ng-if="user.is_login" style="min-width:235px;">
+                        <li><a href="#" ui-sref="user_profile" style="padding-left:10px;"><i class="fa fa-user"></i>Account </a></li>
+                        <!-- <li><a href="#"  style="padding-left:10px;"><i class="fa fa-user">Admin</a></li>-->
+                        <li><a ng-click="user_logOut()" style="padding-left:10px;"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            </li>
+            </ul>
+        </div>
+        </ul>
+    </div>
+</section>
+
+</div>
+
+
+<!-- sidemeu js-->
+<script type="text/javascript">
+
+        function Menu(id) {
+            $("#" + id).fadeToggle('show');
+            event.stopPropagation();
+        }
+
+        $("#slide-submenu").click(function (event) {
+
+            console.log('cliked');
+
+            $("#smenu").fadeToggle('show');
+            event.stopPropagation();
+        });
+        $("body").click(function () {
+            $("#smenu").hide();
+        });
+
+        $("#smenu").click(function (event) {
+
+            event.stopPropagation();
+        });
+
+        // for menu coloue
+        var elem = '#myNavbar > ul.nav.navbar-nav > li';
+        $(elem).click(function () {
+            if ($(this).hasClass('')) {      // for no class;
+                $(elem).removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+
+</script>

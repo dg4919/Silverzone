@@ -1,0 +1,20 @@
+﻿<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <!--Start Create Section-->
+            <div class="col-md-12" ng-include="'Templates/School/Master/ExportImport/Partial/Step.html'"></div>
+
+            <div class="col-md-12" ng-include="'Templates/School/Master/ExportImport/Partial/Upload.html'"></div>
+
+            
+
+        </div>
+        <!--End Create Section-->
+    </div>
+</form>

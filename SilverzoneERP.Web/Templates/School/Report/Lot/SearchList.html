@@ -1,0 +1,93 @@
+﻿
+<div class="col-md-12" id="SchoolList">
+    <table class="table table-striped responsive" wt-responsive-table>
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>School Name</th>
+                <th>School Code</th>
+                <th>No. of Student</th>
+                <th>Event</th>
+                <th>Co-Ordinator</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in SchoolList" style="border:1px gray solid;">
+                <td ng-bind="$index+1"></td>
+                <td ng-bind="data.SchName"></td>
+                <td ng-bind="data.SchCode"></td>
+                <td ng-bind="data.No_Of_Student"></td>
+                <td ng-bind="data.EventCode"></td>
+                <td>
+                    <div ng-repeat="cord in data.CoOrdinator">
+                        <hr ng-if="$index!=0" />   
+                        <div>
+                            <strong>Name : </strong>
+                            <strong class="sz-blue">{{cord.CoOrdName}}
+                            data:  {{data.StudentInfo}}
+                            </strong>
+                        </div>
+                        <div>
+                            <strong>Mobile No. : </strong>
+                            <strong class="sz-blue">{{cord.CoOrdMobile}}</strong>
+                        </div>
+                        <div>
+                            <strong>Email-Id : </strong>
+                            <strong class="sz-blue">{{cord.CoOrdEmail}}</strong>
+                        </div> 
+                                           
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+
+<!--<div class="panel-group">
+    <div class="panel panel-default" ng-repeat="data in SchoolList" style="cursor:pointer;">
+        <div class="panel-heading" data-toggle="collapse" href="#SchoolList_{{data.Id}}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-7">
+                        <strong>School Name : </strong>
+                        <strong class="sz-blue">{{data.SchName}}</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <strong>School Code : </strong>
+                        <strong class="sz-blue">{{data.SchCode}}</strong>
+                    </div>
+                    <div class="col-md-2">
+                        <strong>No. of Student : </strong>
+                        <strong class="sz-blue">{{data.NoOfStudent}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="SchoolList_{{data.Id}}" class="panel-collapse collapse">
+            <div class="panel-body">
+              
+                <div class="col-lg-12">
+                    <table class="table table-striped responsive" wt-responsive-table>
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Co-Ordinator Name</th>
+                                <th>Mobile No.</th>
+                                <th>Emaild-Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data.CoOrdinator">
+                                <td ng-bind="$index+1"></td>
+                                <td ng-bind="item.CoOrdName"></td>
+                                <td ng-bind="item.CoOrdMobile"></td>
+                                <td ng-bind="item.CoOrdEmail"></td>                               
+                            </tr>
+                        </tbody>
+                    </table>                   
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div-->

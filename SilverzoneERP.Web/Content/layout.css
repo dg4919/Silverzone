@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+.bbg{font-size:16px;}
+}
+@media(min-width: 320px) and (max-width: 480px){
+	.bbg{font-size:16px;}
+	.dgi{text-align:center;}
+	
+	}
+	
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        padding: 0px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+	.dgi{text-align:center;}
+}
+

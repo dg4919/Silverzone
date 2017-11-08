@@ -1,0 +1,67 @@
+﻿<section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add Result Event</h3>
+                </div>
+                
+                <form name="book_categoryForm" class="form-horizontal" ng-submit="submit_data(book_categoryForm)" ng-validate="validationOptions">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Event Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Category Name" name="category_name" ng-model="book_category.Name">
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-sm-6" style="font-weight: bold;">
+                                    Result Event Details
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table">
+                                    <table datatable="ng" class="row-border hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Event</th>
+                                                <th>Is Decared</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="category in book_category_list">
+                                                <td>{{ category.Id }}</td>
+                                                <td>{{ category.Name }}</td>
+                                                <td>{{ category.Description }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <a class="btn btn-default" ui-sref="book_category_list"> Book Category List </a>
+                        <button type="submit" class="btn btn-info pull-right">
+
+                            Add Cateogry
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,107 @@
+﻿<div class="col-md-12">
+    <table class="table table-striped responsive" wt-responsive-table>
+        <thead>
+            <!--<tr>
+                <th colspan="4" class="text-center">
+                    <div class="sz-order-header">
+                        <h2><strong>{{Book.School.SchName}}</strong></h2>
+                        <button class="btn btn-default pull-right"
+                                ng-click="verifyOrder(Book)">
+                            Verify
+                        </button>
+                    </div>
+                    <div>
+                        <strong>
+                            {{Book.School.SchAddress}}, {{Book.School.CityName}},<br />
+                            {{Book.School.DistrictName}}, {{Book.School.StateName}},<br />
+                            {{Book.School.ZoneName}}-{{Book.School.CountryName}} - {{Book.School.SchPinCode}}
+                        </strong>
+                    </div>
+                </th>
+            </tr>
+            <tr style="background-color:darkgrey;">
+                <th colspan="2"><strong>PO Number : </strong>{{Book.PO_Number}}</th>
+                <th colspan="2" class="text-right">
+                    <strong>Date : </strong>{{Book.PO_Date|date:'dd-MMM-yyyy hh:mm:ss a'}}
+                </th>
+
+            </tr>-->
+            <tr>
+                <th>S.No.</th>
+                <th>Date</th>
+                <th>Event</th>
+                <th>School Code</th>
+                <th>School Name</th>
+                <th>Address</th> 
+                <th>State</th> 
+                <th>District</th>                
+                <th>City</th>  
+                <th></th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in BookOrderlist">
+                <td>{{$index+1}}</td>
+                <td>{{data.PO_Date|date:'dd-MMM-yyyy hh:mm:ss a'}}</td>
+                <td>{{data.School.EventCode}}</td>
+                <td>{{data.School.SchCode}}</td>
+                <td>{{data.School.SchName}}</td>
+                <td>{{data.School.SchAddress}}</td>
+                <td>{{data.School.StateName}}</td>
+                <td>{{data.School.DistrictName}}</td>
+                <td>{{data.School.CityName}}-{{data.School.SchPinCode}}</td>
+                <td>
+                    <button class="btn btn-default pull-right"
+                            ng-click="verifyOrder(data)">
+                        Verify
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<div class="col-md-12" ng-repeat="Book in BookOrderlist">
+
+    <table class="table table-striped responsive" wt-responsive-table>
+        <thead>
+            <tr style="background-color:darkgrey;">
+                <th colspan="4" class="text-center">
+                    <div class="sz-order-header">
+                        <h2><strong>{{Book.School.SchName}}</strong></h2>
+                        <button class="btn btn-default pull-right"
+                                ng-click="verifyOrder(Book)">Verify</button>
+                    </div>
+                    <div>
+                        <strong>
+                            {{Book.School.SchAddress}}, {{Book.School.CityName}},<br />
+                            {{Book.School.DistrictName}}, {{Book.School.StateName}},<br />
+                            {{Book.School.ZoneName}}-{{Book.School.CountryName}} - {{Book.School.SchPinCode}}
+                        </strong>
+                    </div>
+                </th>                
+            </tr>
+            <tr style="background-color:darkgrey;">
+                <th colspan="2"><strong>PO Number : </strong>{{Book.PO_Number}}</th>
+                <th colspan="2" class="text-right">
+                    <strong>Date : </strong>{{Book.PO_Date|date:'dd-MMM-yyyy hh:mm:ss a'}}                   
+                </th>
+                
+            </tr>
+            <tr>
+                <th>S.No.</th>
+                <th>Class</th>
+                <th>Type</th>
+                <th>Quantity</th>               
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in Book.Order">
+                <td>{{$index+1}}</td>
+                <td>{{data.ClassName}}</td>
+                <td>{{data.BookName}}</td>
+                <td>{{data.Quantity_verify}}</td>                
+            </tr>
+        </tbody>
+    </table>
+</div>-->

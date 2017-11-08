@@ -1,0 +1,105 @@
+﻿
+<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/subscribe.png" class=" img-responsive" alt="silverzone" />
+        <!-- <div class="overlay"></div>
+         <div class="banner-content text-center">
+             <h2>Subscribe For Updates</h2>
+             <p>Silverzone olympiad Subscribe For Updates </p>
+             <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Subscribe</i></div>
+         </div>-->
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="media" class="parallax-section">
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1 class="heading bold"><span>Subscribe For </span>  Updates</h1>
+                    <hr class="style17">
+                </div>
+
+                <div class="text-left">
+                    <form name="subcribeUpdates_form"
+                          ng-submit="submit(subcribeUpdates_form)"
+                          ng-validate="validationOptions">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="firstname">Your Name:*</label>
+                                    <input type="text" name="uname" class="form-control" ng-model="model.UserName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="class">Class:*</label>
+                                    <select class="form-control"
+                                            ng-model="model.classId"
+                                            name="clas"
+                                            ng-options="::class.Id as ::class.className for class in jsonModel.classList">
+                                        <option value=""> ---- Select Class ---- </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address:*</label>
+                                    <input type="text" name="email" class="form-control" ng-model="model.EmailId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phonenumber">Mobile Number:*</label>
+                                    <input type="text" name="Mobile" class="form-control" ng-model="model.Mobile">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="address1">Address:*</label>
+                                    <input type="text" name="address" class="form-control" ng-model="model.Address">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">City:*</label>
+                                    <input type="text" name="city" class="form-control" ng-model="model.City">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Region:*</label>
+                                    <select name="state"
+                                            class="form-control"
+                                            ng-model="model.stateId"
+                                            ng-options="::state.Id as ::state.StateName for state in jsonModel.stateList">
+                                        <option value="">Select State</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="country">Country:*</label>
+                                    <select name="country"
+                                            class="form-control"
+                                            ng-model="model.countryId"
+                                            ng-options="::country.code as ::country.name for country in countrys">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group checkbox" style="margin-left:6px">
+                            <input type="checkbox" name="Confirm">
+                            <font face="Verdana" size="2">
+                                <strong>Disclaimer:</strong>
+                                T&amp;C may also apply.
+                            </font>
+                        </div>
+                        <button class="btn btn-lg gray" type="submit" name="submit">Submit Here</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<partners></partners>

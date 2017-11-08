@@ -1,0 +1,79 @@
+﻿<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="/images/booklist.png" class=" img-responsive" alt="silverzone" />
+        <!--<div class="overlay"></div>
+        <div class="banner-content text-center">
+            <h2>Buy Books / Combo</h2>
+            <p>Buy Excellence Guide & All Question Paper Books</p>
+            <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Books</i></div>
+        </div>-->
+    </div>
+</section>
+<news_updates></news_updates>
+
+<div id="BookSearchDiv"
+     ng-include="'templates/Partials/book_search.html'"></div>
+
+
+<div class="container ">
+    <div class="row">
+
+        <div class="panel with-nav-tabs panel-default">
+
+            <div class="panel-body row">
+
+                <!-- Book Section -->
+                <div class="row"
+                     ng-if="bookList.length">
+                    <div class="section-title text-center">
+                        <h1 class="heading bold"><span>Silverzone Olympiad  </span> Books</h1>
+                        <hr class="style17">
+                    </div>
+                    <div class="container">
+                        <div class=" top-buffer">
+
+                            <div ng-repeat="bookInfo in bookList">
+
+                                <!--  bootstrap clearfix class every three (or whatever number) element corrects display problem from differents block's height. -->
+                                <div class="clearfix" ng-if="$index % 4 == 0"></div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <bind:Books book="bookInfo"
+                                                class_id="{{ classId }}">
+                                    </bind:Books>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bundle Section -->
+                <div class="row"
+                     ng-if="bundleList.length">
+                    <bind-Bundles combo="bundleList">
+                    </bind-Bundles>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+        window.$zopim || (function (d, s) {
+            var z = $zopim = function (c) { z._.push(c) }, $ = z.s =
+            d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+                z.set.
+                _.push(o)
+            }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+            $.src = "https://v2.zopim.com/?4DfKTF7Ev5lbGuSjJzc3egiBsAPmLoJJ"; z.t = +new Date; $.
+            type = "text/javascript"; e.parentNode.insertBefore($, e)
+        })(document, "script");
+</script>
+<!--End of Zendesk Chat Script-->

@@ -1,0 +1,42 @@
+﻿
+
+<div class="col-md-12">
+        <div class="col-md-3 col-md-offset-3">
+            <div class="form-group">
+                <label>Event :</label>
+                <select class="form-control"
+                        name="EventId"
+                        ng-options="obj.EventId as obj.EventCode for obj in EventInfo "
+                        ng-model="Search.EventId">
+                    <option value="">----------Select Event----------</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Exam Date :</label>
+                <select class="form-control"
+                        name="ExaminationDateId"                      
+                        ng-model="Search.ExaminationDateId">
+                    <option value="">----------Select Exam Date----------</option>
+                    <option value="{{obj.ExaminationDateId}}" ng-repeat="obj in Lot_Option.ExamDateList">{{obj.ExamDate}}</option>
+                    <option value="-1">Change Exam Date</option>
+                    <option value="-2">Unknown</option>
+                </select>
+            </div>
+            <div class="form-group" ng-if="Search.ExaminationDateId==-1">
+                <label>Change Exam Date :</label>
+                <input type='text'
+                       name="ChangeExamDate"
+                       class="form-control"
+                       exam-date-picker
+                       ng-model="Search.ChangeExamDate" />
+            </div>           
+        </div>
+        <div class="col-md-5 col-md-offset-1" style="margin-top:25px;">
+            <label><input type="checkbox" ng-model="Search.IsZeroEnroll" /> Zero(0) Enrollment</label><br />
+            <label><input type="checkbox" ng-model="Search.IsZeroStuReg"/> Zero(0) Student Registration</label><br />
+            <label><input type="checkbox" ng-model="Search.IsDiff" /> Student Difference</label><br />            
+            <label><input type="checkbox" ng-model="Search.IsNotInSelectedDate" /> Not in selected Date</label><br />            
+        </div>
+    </div>
+

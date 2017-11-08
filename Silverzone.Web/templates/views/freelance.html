@@ -1,0 +1,130 @@
+﻿<div class="row heig"></div>
+     <!-- start banner section -->
+      <section id="banner">
+<div class="banner ts-faq-banner parallax-section">
+<img src="images/event_top/freelance_banner.jpg" class="img-responsive">
+       
+    </div>
+</section>
+
+<!-- End banner section -->
+<news-updates></news-updates>
+<!-- End Home section -->
+
+
+<section id="media" class="parallax-section">
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1 class="heading bold"><span>BECOME SALES CO-ORDINATOR </span> IN YOUR REGION</h1>
+                    <hr class="style17">
+                </div>
+
+                <div class="text-left">
+                    <p>If you are a working/retired Teacher, Principal, Educational Consultant, Social Worker, Bookseller you can join us as SilverZone Coordinator in your region.
+
+</p>
+
+                    <form name="schoolRegister_form"
+                          ng-submit="submit(schoolRegister_form)"
+                          ng-validate="validationOptions">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="firstname">First Name:*</label>
+                                    <input type="text" name="fname" class="form-control" ng-model="model.fName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="firstname">Last Name:*</label>
+                                    <input type="text" name="lname" class="form-control" ng-model="model.lName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address:*</label>
+                                    <input type="text" name="email" class="form-control" ng-model="model.EmailId">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phonenumber">Mobile Number:*</label>
+                                    <input type="text" name="Mobile" class="form-control" ng-model="model.Mobile">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="class">Gender:*</label>
+                                    <select class="form-control"
+                                            ng-model="model.GenderId"
+                                            name="gender"
+                                            ng-options="::json.Id as ::json.Name for json in school_registerJson.genders">
+                                        <option value=""> ---- Select Gender ---- </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phonenumber">Age:(Between 21 to 60 Years.)*</label>
+                                    <input type="text" name="dob" class="form-control" ng-model="model.Age">
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Educational Qualification:*</label>
+                                    <input type="text" name="qualification" class="form-control" ng-model="model.Qualification">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address1">Address:*</label>
+                                    <input type="text" name="address" class="form-control" ng-model="model.Address">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">City:*</label>
+                                    <input type="text" name="city" class="form-control" ng-model="model.City">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Region:*</label>
+                                    <select name="state"
+                                            class="form-control"
+                                            ng-model="model.State"
+                                            ng-options="::state.StateName as ::state.StateName for state in jsonModel.stateList">
+                                        <option value="">Select State</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">Pin Code:*</label>
+                                    <input type="text" name="pinCode" class="form-control" ng-model="model.PinCode">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="country">Country:*</label>
+                                    <select name="country"
+                                            class="form-control"
+                                            ng-model="model.Country"
+                                            ng-options="::country.name as ::country.name for country in countrys">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group checkbox" style="margin-left:6px">
+                            <input type="checkbox" name="confirm">
+                            <font face="Verdana" size="2">
+                                <strong>Disclaimer:</strong>
+                                T&amp;C may also apply.
+                            </font>
+                        </div>
+                        <button class="btn btn-lg gray" type="submit" name="submit">Submit Here</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>

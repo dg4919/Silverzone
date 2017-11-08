@@ -1,0 +1,16 @@
+﻿<form name="frm" ng-submit="frm.$valid && Submit()">
+    
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <!--Start Create Section-->
+            <div ng-show="isEdit" ng-include="'Templates/School/Master/Designation/Partial/Create.html'"></div>
+            <!--End Create Section-->
+
+            <!--Start List Section-->
+            <div ng-hide="isEdit" ng-include="'Templates/School/Master/Designation/Partial/List.html'"></div>
+            <!--End List Section-->
+        </div>
+    </div>
+</form>

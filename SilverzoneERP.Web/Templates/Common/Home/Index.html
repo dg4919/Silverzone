@@ -1,0 +1,61 @@
+﻿<style>
+
+    body {
+        letter-spacing: 0.2px;
+    }
+
+    p {
+        padding: 5px 0px;
+        
+        font-size: 1.3em;
+        letter-spacing: 0.2px;
+        margin: 5px 2px;
+    }
+
+    .danger {
+        color: #000;
+    }
+
+  
+    .sgbg {background:url(images/bgapp.jpg) no-repeat 100%;background-size:cover;min-height:570px;
+    }
+    @media only screen and (min-width: 320px) and (max-width:480px)  {
+         p{
+        padding: 2px 0px;
+        
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        margin: 2px 2px;
+    }
+        h1 {font-size:14px;
+        }
+        .sgbg {background:url(images/bgapp.jpg) no-repeat 100%;background-size:cover;min-height:270px;
+    }
+    }
+
+</style>
+<section class="d_header"  ng-include="'Templates/Common/Partial/Header.html'"></section>      
+    
+<div class="row sgbg">
+    <div class="col-md-12 text-center">
+        <h1 style="padding-top:60px;color:#111;">{{welcome}}</h1>
+        <hr class="style17" />
+    </div>    
+    <div class="col-md-6 col-md-offset-3 text-center" ng-if="UserInfo.SchId!=null&&(UserInfo.IsActive==null||UserInfo.IsActive==false)"  style="padding:0px 0px 10px 0px;">
+        <p> However, your status is<b class="danger"> INACTIVE</b>.</p>
+        <p> Your account will be Activated after having the confirmation from you over the phone.</p>
+        <p>You will receive a call from our representative within 24 to 48 working Hrs.</p>
+        <p> In case of any query, please email is at query@silverzone.org.</p>
+    </div>
+    <div class="col-md-12 col-md-6 col-md-offset-3 " ng-if="UserInfo.SchId!=null&&UserInfo.IsActive==true" style="padding:0px 0px 10px 0px;">
+        <p> School Name :<b class="danger"> {{UserInfo.SchName}}</b></p>
+        <p> School Code :<b class="danger"> {{UserInfo.SchCode}}</b></p>
+        <p> You may now use the following options:  </p>
+
+        <ul style="padding-left:50px;">
+            <li><p>Enroll your school for SilverZone Olympiads</p></li>
+            <li><p>Order books online</p></li>
+        </ul>
+    </div>
+</div>                   
+

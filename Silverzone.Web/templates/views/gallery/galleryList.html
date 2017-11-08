@@ -1,0 +1,58 @@
+﻿<div class="heig"></div>
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/gallery.jpg" class=" img-responsive" alt="silverzone">
+        <!--  <div class="overlay"></div>
+          <div class="banner-content text-center">
+              <h2>Silverzone Gllery</h2>
+              <p> Educational Exellence Awards</p>
+              <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Gallery_detail</i></div>
+          </div>-->
+    </div>
+</section>
+
+<news_updates></news_updates>
+
+<section id="media" class="parallax-section">
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1 class="heading bold"> gallery</h1>
+                    <hr class="style17">
+                </div>
+
+                <div ng-repeat="gallery in galleryList">
+
+                    <div class="col-xs-6 col-sm-4 col-md-3 mar_top">
+                        <h3 style="font-size: large;margin: 0px 0px 7px 0px !important;font-family: inherit;color:#111;"
+                            ng-bind="gallery.category + ' - ' + gallery.year"></h3>
+
+                        <div class="clearfix" ng-if="$index % 4 == 0"></div>
+
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h4 ng-bind="gallery.category + ' - ' + gallery.year"></h4>
+                                <p ng-bind="gallery.Description"></p>
+                                <p>
+                                    <a ui-sref="gallery_Detail({ galleryId: gallery.Id })"
+                                       class="label label-default gray">
+                                        View Gallery
+                                    </a>
+                                </p>
+                            </div>
+                            <img ng-src="{{ gallery.ImageUrl }}"
+                                 alt="..."
+                                 class="img-responsive"
+                                 style="height: 250px;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>
+

@@ -1,0 +1,134 @@
+﻿<uib-tabset active="active">
+    <uib-tab index="1" heading="Un-Confirm" disable="tab.disabled">
+        <!--Start Add Fields-->
+        <div class="panel-group">
+            <div class="panel panel-default" ng-repeat="data in StudentEnrollmentOrderList.notconfirm" style="cursor:pointer;">
+                <div class="panel-heading" data-toggle="collapse" href="#EnrollNotConf_{{data.Id}}">
+                    <div style="color:#317eac;" class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <strong>Event : {{data.EventCode}}</strong>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Total : {{data.TotalEnrollmentSummary}}</strong>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Date : {{data.UpdationDate|date:'dd-MMM-yyyy hh:mm:ss a'}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="EnrollNotConf_{{data.Id}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <!--Start Zone Section-->
+                        <div class="panel-group">
+                            <div class="panel panel-default" ng-repeat="Order in data.Order">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" href="#OrderNotConf_{{Order.Id}}">
+                                        <span style="color:#317eac;">
+                                            <strong class="col-md-6">OrderNo : {{Order.OrderNo}}</strong>
+                                            <strong>Total : {{Order.TotlaEnrollment}}</strong>
+                                        </span>
+                                    </a>
+                                    <a href="" ng-click="Edit(data,Order)" class="fa fa-pencil pull-right"></a>
+                                </div>
+                                <div id="OrderNotConf_{{Order.Id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <!--Start Zone Section-->
+                                        <table class="table table-striped responsive" wt-responsive-table>
+                                            <thead>
+                                                <tr>
+                                                    <th>S.No.</th>
+                                                    <th>Class</th>
+                                                    <th>No Of Student</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="Order in Order.EnrollmentOrderDetail" ng-if="Order.No_Of_Student>0">
+                                                    <td>{{$index+1}}</td>
+                                                    <td>{{Order.ClassName}}</td>
+                                                    <td>{{Order.No_Of_Student}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--End Zone Section-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Zone Section-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Add Fields-->
+    </uib-tab>
+    <uib-tab index="2" heading="Confirm" disable="tab.disabled">
+        <!--Start Add Fields-->
+        <div class="panel-group">
+            <div class="panel panel-default" ng-repeat="data in StudentEnrollmentOrderList.confirm" style="cursor:pointer;">
+                <div class="panel-heading" data-toggle="collapse" href="#EnrollConf_{{data.Id}}">
+                    <div style="color:#317eac;" class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <strong>Event : {{data.EventCode}}</strong>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Total : {{data.TotalEnrollmentSummary}}</strong>
+                            </div>
+                            <div class="col-md-4"> 
+                                <strong>Date : {{data.UpdationDate|date:'dd-MMM-yyyy hh:mm:ss a'}}</strong>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div id="EnrollConf_{{data.Id}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <!--Start Zone Section-->
+                        <div class="panel-group">
+                            <div class="panel panel-default" ng-repeat="Order in data.Order">
+                                <div class="panel-heading" data-toggle="collapse" href="#OrderConf_{{Order.Id}}">
+                                    <a href="#">
+                                        <span style="color:#317eac;">
+                                            <strong class="col-md-6">OrderNo : {{Order.OrderNo}}</strong>
+                                            <strong>Total : {{Order.TotlaEnrollment}}</strong>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="OrderConf_{{Order.Id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <!--Start Zone Section-->
+                                        <table class="table table-striped responsive" wt-responsive-table>
+                                            <thead>
+                                                <tr>
+                                                    <th>S.No.</th>
+                                                    <th>Class</th>
+                                                    <th>No Of Student</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="Order in Order.EnrollmentOrderDetail" ng-if="Order.No_Of_Student>0">
+                                                    <td>{{$index+1}}</td>
+                                                    <td>{{Order.ClassName}}</td>
+                                                    <td>{{Order.No_Of_Student}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--End Zone Section-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Zone Section-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Add Fields-->
+    </uib-tab>
+
+        
+</uib-tabset>
+
+
+

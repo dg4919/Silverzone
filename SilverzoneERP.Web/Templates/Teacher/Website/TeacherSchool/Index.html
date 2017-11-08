@@ -1,0 +1,80 @@
+﻿<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <div class="modal-content">
+        <div class="modal-header sz_section row">
+            <a  href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Logout()"></a>           
+            <strong>School</strong>
+            <button type="submit"
+                    class="pull-right btn btn-default">
+                <i class="fa fa-saved"></i> <strong>Save</strong>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-3">
+
+                        <label>Pin Code :</label>
+                        <input class="form-control"
+                               name="SchPinCode"
+                               ng-model="TeacherSchool.SchPinCode"
+                               maxlength="6"
+                               minlength="6"
+                               only-numbers 
+                               autofocus />
+                    </div>
+                    <div class="form-group col-md-9">
+
+                        <label>School Name :</label>
+                        <input class="form-control"
+                               name="SchName"
+                               ng-model="TeacherSchool.SchName" />
+                    </div>
+                </div>
+
+                <div class="col-md-12">                    
+                    <div class="form-group col-md-12">
+                        <label>School Address :</label>
+                        <input class="form-control"
+                               name="SchAddress"
+                               ng-model="TeacherSchool.SchAddress" />
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group col-md-6">
+                        <label><i class="fa fa-map-marker"></i> City</label>
+                        <select class="form-control"
+                                name="CityId"
+                                ng-options="obj.CityId as obj.CityName for obj in City"
+                                ng-model="TeacherSchool.CityId"
+                                ng-change="CityChange()">
+                            <option value="">---------Select City---------</option>
+                        </select>                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><i class="fa fa-map-marker"></i> District</label>
+                        <span class="form-control"
+                              ng-bind="TeacherSchool.DistrictName"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group col-md-6">
+                        <label><i class="fa fa-map-marker"></i> State</label>
+                        <span class="form-control"
+                              ng-bind="TeacherSchool.StateName"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><i class="fa fa-map-marker"></i> Country</label>
+                        <span class="form-control"
+                              ng-bind="TeacherSchool.CountryName"></span>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</form>
+

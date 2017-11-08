@@ -1,0 +1,18 @@
+﻿<div class="pull-left">
+    <a ng-show="isEdit" href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Back()"></a>
+    <strong>RC School Visit</strong>
+</div>
+
+<div class="pull-right">
+    <button class="btn btn-default" 
+            type="submit"
+            ng-show="isEdit">
+        <i class="fa fa-saved"></i>
+        <strong> Save</strong>
+    </button>
+
+    <a ng-if="Permission.Add" ng-hide="isEdit" href="#" style="text-decoration:none;" ng-click="Add()"><i class="fa fa-plus"></i></a>
+
+</div>
+
+

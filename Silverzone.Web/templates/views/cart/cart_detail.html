@@ -1,0 +1,122 @@
+﻿<style>
+    #cart_detailContainer a:hover {
+        text-decoration: none;
+    }
+</style>
+
+
+<div id="cart_detailContainer"
+     class="container mrgTop" style="margin-top:70px;">
+
+    <div class="row">
+        <div class="section-title text-center">
+            <h1 class="heading bold"><span>Review   </span>your cart</h1>
+            <hr class="style17">
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <table class="table panel-primary" style="border: 1px #b3acac solid;">
+            <tbody style="background-color: #f2f2f2;">
+                <tr>
+                    <th>
+                        Book Image
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                    <th>
+                        Price (each)
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>SubTotal</th>
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="item in cart.Items track by $index">
+                    <td>
+                        <img ng-src="{{ item.bookType === 2 ? item.bookImage :  item.bookImage }}" class="img-responsive img-bordered" style="width: 75px;">
+                    </td>
+                    <td ng-bind="item.bookTitle" ng-if="item.bookType === 1"></td>
+                    <td ng-if="item.bookType === 2">
+                        <!-- for bundle > show anchor tab to get bundle detail -->
+                        <a href="" show-Bundle:Modal bundleId="{{item.bookId}}">{{ item.bookTitle }}</a>
+                    </td>
+                    <td>
+                        <!--  one time binding bcoz > price qty value is fixed -->
+                        <i class="fa fa-rupee"></i> {{ item.book_newPrice || item.bookPrice | number : 2 }}
+                    </td>
+                    <td id="item-count-id">
+                        <div class="input-group input-group-lg">
+                            <button class="btn btn-default pull-left" type="button" ng-click="cartDetail.addCartqty(true, $index)"> <i class="fa fa-plus"></i></button>      <!--  model value is diffrent than showing value -->
+                            <input class="text-center col-xs-4" maxlength="2" type="text" ng-model="item.bookQty" ng-keyup="cartDetail.updateQty($index)" number_only />        <!--  Here, item.bookQty is very imp means ng-keyup will only run if it has a value/Not null/empty  -->
+                            <button class="btn btn-default" type="button" ng-click="cartDetail.addCartqty(false, $index)"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </td>
+                    <td style="width: 120px !important;">
+                        <i class="fa fa-rupee"></i> {{ item.bookTotalPrice | number : 2 }}
+                    </td>
+                    <td>
+                        <a class="text-danger"
+                           href="#"
+                           ng-click="cartDetail.removeItem($index)"
+                           title="Remove Item">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Toatal</strong></td>
+                    <td id="cart-total"><i class="fa fa-rupee"></i> {{ cart.shipping_Amount | number : 2}} </></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>
+                            Shipping Charges
+                            <div style="font-size: 75% !important;"> (for first unit @ {{ cartDetail.country_type === 1 ? siteConfig.India_bookShiping_Charges1 : siteConfig.OutsideIndia_bookShiping_Charges1 }} and rest @ {{ cartDetail.country_type === 1 ? siteConfig.India_bookShiping_Charges2 : siteConfig.OutsideIndia_bookShiping_Charges2 }} each) </div>
+                        </strong>
+                    </td>
+                    <td><i class="fa fa-rupee"></i> {{ cart.shipping_Charges }} </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Payable Amount</strong></td>
+                    <td><i class="fa fa-rupee"></i> {{ cart.total_Amount | number : 2 }}</></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="row" style="margin: 25px;">
+        <div class="col-lg-12">
+            <div class="col-md-6">
+                <a class="btn btn-default" href="/Book/List" ui-sref="book_list">
+                    <i class="fa fa-home"></i>  Continue Shopping
+                </a>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-default" href="/checkout" ui-sref="cart_address_detail">
+                    <i class="fa fa-shopping-bag "></i> Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

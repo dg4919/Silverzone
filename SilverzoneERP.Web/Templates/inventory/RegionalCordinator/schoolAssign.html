@@ -1,0 +1,110 @@
+﻿<style>
+    .form-group .form-control1.has-error {
+        border: 1px solid #dd4b39;
+    }
+</style>
+
+<section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+<div class="sz_card">
+
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            Register Cordinator
+        </div>
+
+        <!-- {{ sourceInfo }}-->
+
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-4">
+                    <select class="form-control col-md-12"
+                            ng-model="selected_rcId"
+                            ng-options="::RC.Id as ::RC.UserName for RC in rcList">
+
+                        <option value=""> ---- Select Regional Cordinator ---- </option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-sm">
+                        <i class="fa fa-search"></i>
+                        Search
+                    </button>
+                </div>
+
+                <div class="col-md-offset-1 col-md-3" style="border: 1px solid #ddd; padding: 15px;">
+                    <div class="col-sm-12">
+                        <p>Name <small> : Divya Gupta </small></p>
+                        <p>Address <small> : B-19, Rohini Sec-1 Avantika </small></p>
+                        <p> Joining Date <small> : 30-Jan-2017 </small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 45px 45px;">
+
+                <div class="col-md- col-md-4">
+                    <input type="button" class="btn btn-primary" value="Manage School By Code" ng-click="getCodeModal()">
+                </div>
+
+                <div class="col-md-offset-1 col-md-3">
+                    <input type="button" class="btn btn-warning" value="Manage Bulk School" ng-click="getbulkModal()">
+                </div>
+
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="button" class="btn btn-info" value="School List" ng-click="get_rcSchools()">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3 ng-if="!rcSchools.length && rcSchools !== null"
+        class="text-danger"
+        style="padding: 25px 0px;">
+        No school is assigned to this RC :(
+    </h3>
+
+    <table class="table table-striped responsive"
+           ng-if="rcSchools.length"
+           wt-responsive-table>
+        <thead>
+            <tr>
+                <th>
+                    Select<input type="checkbox"
+                                 class="checkbox"
+                                 ng-model="model.checkSts"
+                                 ng-click="toggleCheck(model.checkSts)" />
+                </th>
+                <th>S.No</th>
+                <th>School Name</th>
+                <th>School Code</th>
+                <th>School Address</th>
+                <th>City</th>
+                <th>District</th>
+                <th>state</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sch in rcSchools">
+                <td><input type="checkbox" class="checkbox" ng-model="sch.isChecked" /></td>
+                <td>{{ $index+1 }}</td>
+                <td ng-bind="::sch.SchName"></td>
+                <td ng-bind="::sch.SchCode"></td>
+                <td ng-bind="::sch.SchAddress"></td>
+                <td ng-bind="::sch.StateName"></td>
+                <td ng-bind="::sch.DistrictName"></td>
+                <td ng-bind="::sch.CityName"></td>
+                <td><a href="#"><i class="fa fa-trash text-danger"</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

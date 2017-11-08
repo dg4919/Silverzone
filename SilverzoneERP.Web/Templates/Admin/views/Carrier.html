@@ -1,0 +1,103 @@
+﻿<style>
+    .form-group .form-control1.has-error {
+        border: 1px solid #dd4b39;
+    }
+
+    .disable-row {
+        z-index: 1000000;
+        opacity: .5;
+        pointer-events: none;
+    }
+</style>
+
+<div class="col-sm-12">
+
+    <form class="form-horizontal"
+          name="carrierForm"
+          ng-submit="submit_data(carrierForm)"
+          ng-validate="validationOptions">
+
+        <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+        <div class="sz_card">
+
+            <div ng-show="isEdit">
+
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Job Title</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="title" ng-model="model.JobTitle">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">No of Vacancies</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="vacancies" ng-model="model.Vacancies">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Qualification</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="qualification" ng-model="model.Qualification">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Skills</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="skills" ng-model="model.Skills">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Experience</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="experience" ng-model="model.Experience">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table ng-if="carrierList.length && !isEdit"
+                   class="table table-striped responsive"
+                   wt-responsive-table>
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Job Title</th>
+                        <th>Vacancies</th>
+                        <th>Qualification</th>
+                        <th>Skills</th>
+                        <th>Experience</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="carrier in carrierList">
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td ng-bind="::carrier.JobTitle"></td>
+                        <td ng-bind="::carrier.Vacancies"></td>
+                        <td ng-bind="::carrier.Qualification"></td>
+                        <td ng-bind="::carrier.Skills"></td>
+                        <td ng-bind="::carrier.Experience"></td>
+                        <td>
+                            <a class="btn btn-warning"
+                               ng-click="editData(carrier)"
+                               style="margin-top: -27px; margin-right: 5px;">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <switch class="green" ng-model="carrier.Status" ng-change="changeCallback(carrier)"></switch>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </form>
+
+
+</div>

@@ -1,0 +1,59 @@
+﻿<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <div class="modal-content">
+        <div class="modal-header sz_section row">
+            <a href="#"
+               ng-click="Back()">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <strong>Remarks</strong>
+            <button type="submit"
+                    class="pull-right btn btn-default">
+                <i class="fa fa-saved"></i> <strong>Save</strong>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <label><input type="checkbox" ng-model="Remarks.IsConfirm" /> IsConfirm</label>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <input class="form-control"
+                               name="Description"
+                               maxlength="200"
+                               autofocus
+                               ng-model="Remarks.Description" />
+                    </div>                    
+                    <div class="col-md-12">
+                        <table class="table table-striped responsive" wt-responsive-table>
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Remarks</th>  
+                                    <th>Date</th> 
+                                    <th>Entry By</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in RemarksList">
+                                    <td>{{$index+1}}</td>
+                                    <td ng-bind="data.Description"></td>                                                                                                      
+                                    <td>{{data.CreationDate|date:'dd-MMM-yyyy hh:mm:ss a'}}</td>                                                                                                      
+                                    <td ng-bind="data.EntryBy"></td>   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,12 @@
+﻿<div class="pull-left">
+    <a ng-show="isEdit" href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Back()"></a>
+    <strong>Student Enrollment</strong>
+</div>
+<div class="pull-right">
+    <button class="btn btn-default" ng-show="isEdit" type="submit">
+        <i class="fa fa-saved"></i>
+        <strong>{{User.Id==undefined?'Save':'Update'}}</strong>
+    </button>
+    <!--ng-if="StudentEnrollmentOrderList.notconfirm.length==0"-->
+    <a  ng-hide="isEdit" href="#" style="text-decoration:none;" ng-click="Add()"><i class="fa fa-plus"></i></a>
+</div>

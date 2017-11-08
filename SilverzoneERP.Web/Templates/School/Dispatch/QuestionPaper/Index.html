@@ -1,0 +1,245 @@
+﻿
+<form name="frm"
+      ng-submit="frm.$valid && Save(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="col-md-offset-3">
+                    <div class="form-group col-md-2">
+                        <label>From</label>
+                        <input type="text"
+                               ng-disabled="QPDispatchDetail.OMR==null?true:false"
+                               placeholder="S.No"
+                               only-numbers
+                               ng-change="QPFrom_Changed(QPDispatchDetail.From)"
+                               ng-model="QPDispatchDetail.From"
+                               class="form-control" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>To</label>
+                        <span ng-bind="QPDispatchDetail.To"                                
+                              class="form-control"></span>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>OMR Sheet</label>
+                        <span class="form-control" ng-bind="QPDispatchDetail.OMR"></span>
+                    </div>
+                </div>
+            </div>
+            <hr class="style17" />
+            
+            <div class="col-md-5">
+                <table class="table table-striped responsive" wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>QP Start No.</th>
+                            <th>QP Last No.</th>
+                            <th>QP No. of Sheet</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border:1px gray solid;">
+                            <td>1</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class1_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class1==null?false:true"
+                                       placeholder="QP Start No."                                     
+                                       ng-change="QPDispatchDetail.Class1_QPLastNo=QPDispatchDetail.Class1_QPStartNo+QPDispatchDetail.Class1"
+                                       ng-model="QPDispatchDetail.Class1_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class1_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class1"></td>                                                    
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>2</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class2_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class2==null?false:true"
+                                       placeholder="QP Start No."                                      
+                                       ng-change="QPDispatchDetail.Class2_QPLastNo=QPDispatchDetail.Class2_QPStartNo+QPDispatchDetail.Class2"
+                                       ng-model="QPDispatchDetail.Class2_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class2_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class2"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>3</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class3_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class3==null?false:true"
+                                       placeholder="QP Start No."                                    
+                                       ng-change="QPDispatchDetail.Class3_QPLastNo=QPDispatchDetail.Class3_QPStartNo+QPDispatchDetail.Class3"
+                                       ng-model="QPDispatchDetail.Class3_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class3_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class3"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>4</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class4_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class4==null?false:true"
+                                       placeholder="QP Start No."                                     
+                                       ng-change="QPDispatchDetail.Class4_QPLastNo=QPDispatchDetail.Class4_QPStartNo+QPDispatchDetail.Class4"
+                                       ng-model="QPDispatchDetail.Class4_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class4_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class4"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>5</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class5_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class5==null?false:true"
+                                       placeholder="QP Start No."                                      
+                                       ng-change="QPDispatchDetail.Class5_QPLastNo=QPDispatchDetail.Class5_QPStartNo+QPDispatchDetail.Class5"
+                                       ng-model="QPDispatchDetail.Class5_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class5_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class5"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>6</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class6_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class6==null?false:true"
+                                       placeholder="QP Start No."                                    
+                                       ng-change="QPDispatchDetail.Class6_QPLastNo=QPDispatchDetail.Class6_QPStartNo+QPDispatchDetail.Class6"
+                                       ng-model="QPDispatchDetail.Class6_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class6_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5">
+                <table class="table table-striped responsive" wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>QP Start No.</th>
+                            <th>QP Last No.</th>
+                            <th>QP No. of Sheet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border:1px gray solid;">
+                            <td>7</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class7_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class7==null?false:true"
+                                       placeholder="QP Start No."                                      
+                                       ng-change="QPDispatchDetail.Class7_QPLastNo=QPDispatchDetail.Class7_QPStartNo,QPDispatchDetail.Class7"
+                                       ng-model="QPDispatchDetail.Class7_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class7_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class7"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>8</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class8_QPStartNo}}"
+                                       placeholder="QP Start No."
+                                       ng-if="QPDispatchDetail.Class8==null?false:true"                                
+                                       ng-change="QPDispatchDetail.Class8_QPLastNo=QPDispatchDetail.Class8_QPStartNo+QPDispatchDetail.Class8"
+                                       ng-model="QPDispatchDetail.Class8_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class8_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class8"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>9</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class9_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class9==null?false:true"
+                                       placeholder="QP Start No."                                   
+                                       ng-change="QPDispatchDetail.Class9_QPLastNo=QPDispatchDetail.Class9_QPStartNo+QPDispatchDetail.Class9"
+                                       ng-model="QPDispatchDetail.Class9_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class9_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class9"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>10</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class10_QPStartNo}}"
+                                       placeholder="QP Start No."
+                                       ng-if="QPDispatchDetail.Class10==null?false:true"                                      
+                                       ng-change="QPDispatchDetail.Class10_QPLastNo=QPDispatchDetail.Class10_QPStartNo+QPDispatchDetail.Class10"
+                                       ng-model="QPDispatchDetail.Class10_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class10_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class10"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>11</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class11_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class11==null?false:true"
+                                       placeholder="QP Start No."                                       
+                                       ng-change="QPDispatchDetail.Class11_QPLastNo=QPDispatchDetail.Class11_QPStartNo+QPDispatchDetail.Class11"
+                                       ng-model="QPDispatchDetail.Class11_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class11_QPLastNo"></td>
+                            <td ng-bind="QPDispatchDetail.Class11"></td>
+                        </tr>
+                        <tr style="border:1px gray solid;">
+                            <td>12</td>
+                            <td>
+                                <input type="number"
+                                       min="{{QPDispatchDetail_Copy.Class12_QPStartNo}}"
+                                       ng-if="QPDispatchDetail.Class12==null?false:true"
+                                       placeholder="QP Start No."                                       
+                                       ng-change="QPDispatchDetail.Class12_QPLastNo=QPDispatchDetail.Class12_QPStartNo+QPDispatchDetail.Class12"
+                                       ng-model="QPDispatchDetail.Class12_QPStartNo"
+                                       class="form-control" />
+                            </td>
+                            <td ng-bind="QPDispatchDetail.Class12_QPLastNo"></td>
+                            <td class="text-center" ng-bind="QPDispatchDetail.Class12"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+            <div class="col-md-2" style="border:1px gray solid; height:300px;">
+                <div class="bg-danger">List</div>
+            </div> 
+            <div class="col-md-12">
+                <div class="form-group col-md-2 col-md-offset-5">
+                    <label>Total Students</label>
+                    <span class="form-control" ng-bind="QPDispatchDetail.TotalEO"></span>
+                </div>
+                <!--<button ng-if="QPDispatchDetail" class="btn btn-default" type="button" ng-click="InitializeValue()">Initialize Value</button>-->
+            </div>        
+        </div>
+    </div>
+</form>

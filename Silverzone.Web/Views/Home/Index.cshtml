@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<html ng-app="Silverzone_app">
+<head>
+
+    @*  Use to fetch relative URL & resolve issue of angular client side Routing
+        Suppose we have URL > http://localhost/silverzone/ but it will take http://localhost/ only, if we dont use base href
+        Use href="~/" instead of href="/" bcoz it will return full prefix relative URL
+    *@
+    <base href="~/" />
+
+    @*  Favicon icon  *@
+    <link rel="icon" type="image/png" sizes="96x96" href="Images/icon.png">
+
+    <title> {{ metaInfo.Title || 'Silverzone Olympiads' }} </title>
+    <meta name="description" content="{{ metaInfo.Description }}">
+    <meta name="keywords" content="{{ metaInfo.Keyword }}">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/Site/css")
+
+    <style>
+        .mrgTop {
+            margin-top: 108px;
+        }
+
+        #userProfile_Container {
+            margin-top: 115px !important;
+            width: 1170px;
+            padding: 0px 50px;
+            margin: 0 auto;
+        }
+
+        .form-group .form-control.has-error {
+            border: 1px solid #dd4b39;
+        }
+
+        .form-group .has-error {
+            color: #dd4b39;
+        }
+
+        .disable-row {
+            z-index: 1000000;
+            opacity: .5;
+            pointer-events: none;
+        }
+    </style>
+
+</head>
+
+<body id="main"
+      ng-controller="site_MasterController"
+      data-spy="scroll"
+      data-target=".navbar-collapse"
+      data-offset="50">
+
+    <!--  Header -->
+    <div id="header"
+         ng-include="'templates/Partials/silverzoneHeader.html'"></div>
+
+    <ui-view ng-cloak block-ui></ui-view>
+
+    <!-- Footer -->
+    <div id="footer"
+         ng-include="'templates/Partials/silverzoneFooter.html'">
+    </div>
+
+    @Scripts.Render("~/bundles/Site/jqueryBundle")
+    @Scripts.Render("~/bundles/Site/AngularBundle")
+
+
+    @Scripts.Render("~/bundles/Site/AppBundle")
+
+</body>
+</html>

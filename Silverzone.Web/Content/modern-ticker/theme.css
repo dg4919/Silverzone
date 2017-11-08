@@ -1,0 +1,77 @@
+﻿@charset "utf-8";
+
+.modern-ticker {
+    color: #fafafa;
+    background-color: #f6f6f6;
+}
+
+.mt-label {
+    background-color: #fd4326;
+    border-right:2px solid #fff;
+}
+
+.mt-news {
+    background-color: #dadada;
+}
+
+.mt-preloader {
+    background: url(/images/preloader.gif) no-repeat center;
+}
+
+.mt-news ul {
+    background-image: url(/images/bullet-over.png);
+}
+
+.mt-news a {
+    color: #202020;
+    background-color: #dadada;
+    background-image: url(/images/bullet.png);
+}
+
+    .mt-news a:hover {
+        color: #fafafa;
+        background-color: #fd4326;
+        border-color: #f20;
+        background-image: url(/images/bullet-over.png);
+    }
+
+    .mt-news a:active {
+        background-color: #fd4326;
+    }
+
+    .mt-news a:focus {
+        background-color: #fd4326;
+    }
+
+.mt-controls {
+    background-image: url(/images/pause.png);
+}
+
+.mt-next, .mt-prev {
+    background-color: #fd4326;
+}
+
+.mt-prev {
+    background-image: url(/images/arrow-prev.png);
+}
+
+.mt-next {
+    background-image: url(/images/arrow-next.png);
+}
+
+.mt-play {
+    background-color: #fd4326;
+    background-image: url(/images/play.png);
+}
+
+.mt-pause {
+    background-image: url(/images/pause.png);
+}
+
+.mt-next:hover, .mt-play:hover, .mt-prev:hover {
+    background-color: #f17022;
+}
+
+.mt-next:active, .mt-play:active, .mt-prev:active {
+    background-color: #f40;
+}

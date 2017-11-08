@@ -1,0 +1,110 @@
+﻿<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="col-sm-12" style="margin: 12px 0px;padding-bottom: 25px;">
+            <div class="col-sm-4">
+                <select class="form-control"
+                        ng-model="comboDetail"
+                        ng-click="bookbundle.intializeQty()"
+                        ng-options="::comboInfo as ::comboInfo.bundleInfo.Name for comboInfo in combo">
+                    <option value=""> --- Select a combo --- </option>
+                </select>
+            </div>
+        </div>
+        
+        <div ng-if="comboDetail">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 colxs">
+                        <p style="position: absolute;z-index: 10;font-size: 18px;font-weight: 600;margin-top: 24px;width: 100%;text-align: center;"
+                           ng-bind="'Class ' + comboDetail.bundleInfo.classId">
+                        </p>
+                        <img class="img-thumbnail"
+                             src="/Images/book_bundle.jpg" />
+                    </div>
+                    <div class="details col-md-6 ">
+                        <h3 class="product-title">
+                            {{ comboDetail.bundleInfo.Name }}
+                            <small style="color: #338ad6; font-size: smaller; cursor: pointer;"
+                                   ng-click="bookbundle.viewBundle_detail(comboDetail.bookInfo)">
+                            </small>
+                        </h3>
+
+                        <ul class="list-group">
+                            <strong style="font-size: larger;">
+                                The combo pack includes: {{ comboDetail.bookInfo.length }} items
+                            </strong>
+                            <li class="list-group-item"
+                                ng-repeat="book in comboDetail.bookInfo"
+                                style="border: none;display: list-item; padding-left: 0px; margin-left: 16px;">
+                                {{ book.title }} : MRP - ₹ {{ book.price }} /-
+                            </li>
+                        </ul>
+
+                        <span><h4 class="price"> {{bookDetail.bookInfo.Class }}</h4></span>
+
+                        <span><h3 class="totalprice">Combo Price <span>: </span> <i class="fa fa-inr"></i><span style="text-decoration: line-through;"> {{ comboDetail.bundleInfo.books_totalPrice }}</span></h4></span>
+                        <span>
+                            <h3 class="price">
+                                Offer Price
+                                <span style="margin-left: 27px;color: #111;">:</span>
+                                <span><i class="fa fa-inr"></i>{{ comboDetail.bundleInfo.bundle_totalPrice }}</span>
+                                <span style="font-size: small;"> <a href="#" ng-click="bookbundle.viewBundle_detail(comboDetail.bookInfo)">View Details</a></span>
+                            </h3>
+                        </span>
+
+                        <div class="row">
+                            <span>
+                                <div class="col-md-3 col-sm-6 col-sm-6 col-xs-6 "><h4 class="price">Quantity: <span></span></h4></div>
+                            </span>
+                            <span>
+                                <div class="col-md-4 col-sm-6 col-xs-6">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="button"
+                                                    class="quantity-left-minus btn btn-default btn-number"
+                                                    ng-click="bookbundle.addCartqty(false, comboDetail.bundleInfo.Id)">
+                                                <span class="glyphicon glyphicon-minus"></span>
+                                            </button>
+                                        </span>
+
+                                        <input type="text"
+                                               class="form-control input-number"
+                                               maxlength="2"
+                                               ng-model="bookbundle.bookBundle_cart_count[comboDetail.bundleInfo.Id]"
+                                               ng-keyup="bookbundle.check_cart(comboDetail.bundleInfo.Id)">
+
+                                        <span class="input-group-btn">
+                                            <button type="button"
+                                                    class="quantity-right-plus btn btn-default btn-number"
+                                                    ng-click="bookbundle.addCartqty(true, comboDetail.bundleInfo.Id)">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+
+                        <div class="col-md-12 top-buffer">
+
+                            <div class="col-md-6 col-xs-6 row">
+                                <button class="add-to-cart btn btn-default gray"
+                                        type="button"
+                                        ng-click="bookbundle.addCombo_toCart(comboDetail.bundleInfo, comboDetail.bundleInfo.Id)">
+
+                                    add to cart
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

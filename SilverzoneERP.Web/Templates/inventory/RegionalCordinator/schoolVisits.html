@@ -1,0 +1,232 @@
+﻿<style>
+    .form-group .form-control1.has-error {
+        border: 1px solid #dd4b39;
+    }
+
+    .disable-row {
+        z-index: 1000000;
+        opacity: .5;
+        pointer-events: none;
+    }
+</style>
+
+<div class="col-sm-12">
+
+    <form name="rcVisitForm"
+          ng-submit="submit_data(rcVisitForm)"
+          ng-validate="validationOptions"
+          novalidate="novalidate">
+
+        <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+        <div class="sz_card">
+
+            <div ng-show="isEdit">
+
+                <div class="col-md-12">
+
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail3" class="control-label col-sm-12">School</label>
+                        <div class="col-sm-9">
+                            <select class="form-control"
+                                    name="school"
+                                    ng-model="model.school"
+                                    ng-options="::school.SchName for school in rcSchools">
+
+                                <option value=""> --- Select School --- </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-3 col-md-4"
+                         ng-if="model.school"
+                         style="border: 1px solid #ddd;padding: 15px;margin-bottom: 25px;">
+                        <div class="col-sm-12">
+                            <p>Code <small> : {{ model.school.SchCode }} </small></p>
+                            <p>Address <small> : {{ model.school.SchAddress }} </small></p>
+                            <p>City <small> : {{ model.school.CityName }} </small></p>
+                            <p>District <small> : {{ model.school.DistrictName }} </small></p>
+                            <p>State <small> : {{ model.school.StateName }} </small></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row"
+                     ng-class="{ 'disable-row': !model.school }">
+
+                    <div class="col-md-12">
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Contact Person Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="model.contactPerson">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Mobile Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="model.contactMobile" only:Numbers>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail3" class="control-label col-sm-12">Visit Type</label>
+                            <div class="col-sm-9">
+                                <select class="form-control"
+                                        name="visitType"
+                                        ng-model="model.visitType"
+                                        ng-options="::types.Id as ::types.Name for types in visitTypes">
+
+                                    <option value=""> --- Select Visit Type --- </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Visit Date</label>
+                            <div class="col-sm-9" style="display: table;">
+                                <input type="text" class="form-control" ng-model="model.visitDate"
+                                       name="visitDate" show:picker>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="control-label col-md-12">Visit Status :</label>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Positive</label>
+                            <div class="col-sm-9">
+                                <ul class="list-group">
+                                    <li class="list-group-item"
+                                        ng-repeat="event in events">
+                                        <input type="checkbox"
+                                               ng-model="event.positive_status"
+                                               ng-disabled="event.negative_status || event.hold_status">
+                                        {{ event.EventCode }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Negative</label>
+                            <div class="col-sm-9">
+                                <ul class="list-group">
+                                    <li class="list-group-item"
+                                        ng-repeat="event in events">
+                                        <input type="checkbox"
+                                               ng-model="event.negative_status"
+                                               ng-disabled="event.positive_status || event.hold_status">
+                                        {{ event.EventCode }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">On Hold</label>
+                            <div class="col-sm-9">
+                                <ul class="list-group">
+                                    <li class="list-group-item"
+                                        ng-repeat="event in events">
+                                        <input type="checkbox"
+                                               ng-model="event.hold_status"
+                                               ng-disabled="event.negative_status || event.positive_status">
+                                        {{ event.EventCode }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">FollowUp Date</label>
+                            <div class="col-sm-9" style="display: table;">
+                                <input type="text" class="form-control followupDate" ng-model="model.followupDate" name="formDate" show:picker>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-sm-12">Visit Remarks</label>
+                            <div class="col-sm-9">
+                                <textarea name="remarks" rows="3"
+                                          class="form-control"
+                                          ng-model="model.remarks"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <table ng-if="rcVisits.length && !isEdit"
+           class="table table-striped responsive"
+           wt-responsive-table>
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>School Name</th>
+                <th>Contact Person Name</th>
+                <th>Contact Person Mobile</th>
+                <th>Visit Date</th>
+                <th>Visit Types</th>
+                <th>Remarks</th>
+                <th>Event</th>
+                <th>Visit Status</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="visits in rcVisits">
+            <tr>
+                <td>{{ $index+1 }}</td>
+                <td ng-bind="::visits.SchName"></td>
+                <td ng-bind="::visits.Contact_Peron_Name"></td>
+                <td ng-bind="::visits.Contact_Peron_Mobile"></td>
+                <td ng-bind="::visits.VisitDate | dateFormat: 'DD/MM/YYYY hh:mm a'"></td>
+                <td ng-bind="::visits.VisitType"></td>
+                <td ng-bind="::visits.Remarks"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="eventInfo in visits.eventInfo">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td ng-bind="::eventInfo.EventName"></td>
+                <td ng-bind="::eventInfo.VisitStatus"></td>
+            </tr>
+    </tbody>
+    </table>
+
+</div>
+
+<script>
+    $('.followupDate').datetimepicker({
+        minDate: 'now'
+    });
+</script>

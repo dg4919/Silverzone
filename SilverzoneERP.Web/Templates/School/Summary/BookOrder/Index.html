@@ -1,0 +1,53 @@
+﻿<form name="frm"
+      ng-submit="GetSummary('GetBookOrderSummary')"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card" style="margin-bottom:50px;">
+        <div class="row">
+            <!--Start Create Section-->
+            
+            <div class="col-lg-12" ng-include="'Templates/School/Summary/Filter.html'"></div>
+            <div class="col-md-12" ng-if="Result.History">
+                <table class="table table-striped responsive" wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>School Code</th>
+                            <th>Event</th>
+                            <th>Order Date</th>
+                            <th ng-repeat="_bookCategory in Result.BookCategory">{{_bookCategory.Title}}</th>
+                            <th>Total Order</th>
+                            <th>Enrollment By</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in Result.History">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.SchCode}}</td>
+                            <td>{{item.EventCode}}</td>
+                            <td>{{item.UpdationDate | date:'dd-MMM-yyyy hh:mm:ss a'}}</td>
+                            <td ng-repeat="_bookCategory in Result.BookCategory">{{item[_bookCategory.Title]= GetQty(item.PurchaseOrder,_bookCategory)}}</td>
+                            <td>{{item.TotlaOrder}}</td>
+                            <td>{{item.UserName}}</td>                                                      
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th ng-repeat="_bookCategory in Summary">{{Result.History | sumOfValue: _bookCategory.Title}}</th>
+                            <th>{{Result.Count}}</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>                  
+            <!--End Create Section-->              
+        </div>
+    </div>
+</form>

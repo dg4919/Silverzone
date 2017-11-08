@@ -1,0 +1,81 @@
+﻿<form name="frm"
+      ng-submit="IsActive(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <div class="modal-content">
+        <div class="modal-header sz_section row">
+            <a href="#"
+               ng-click="Back()">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <strong>School Details</strong>
+
+            <button  type="submit"
+                    ng-if="TeacherDetail"
+                    class="pull-right btn btn-default">
+                <i class="fa fa-saved"></i> <strong>Save</strong>
+            </button>
+                        
+        </div>
+
+        <div class="modal-body">
+            <div class="row" ng-if="TeacherDetail">                                  
+                <div class="col=md-12 text-center">
+                    <p><h3 class="sz-blue">{{TeacherDetail.SchoolName}}</h3></p>
+                    <p>{{TeacherDetail.SchoolAddress}},</p>
+                    <p>{{TeacherDetail.City}},</p>
+                    <p>{{TeacherDetail.State}},</p>
+                    <p>{{TeacherDetail.Country}}-{{TeacherDetail.PinCode}}</p>
+                </div>
+                <hr class="style17" />                     
+                <div class="col-md-12">
+                    <div class="form-group col-md-6">
+                        <label>School Code:</label>
+                        <input type='text'
+                               name="SchoolCode"
+                               class="form-control"
+                               autofocus
+                               ng-model="TeacherDetail.SchoolCode" />
+                    </div>
+                    <div class="form-group col-md-6" style="padding-top:25px;">
+                        <label><input type="checkbox" ng-model="TeacherDetail.User.IsActive" /> IsConfirm</label>
+                    </div>
+                </div>  
+                
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <label>Remarks :</label>
+                        <input class="form-control"
+                               name="Description"
+                               maxlength="200"
+                               autofocus
+                               ng-model="Remarks.Description" />
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-striped responsive" wt-responsive-table>
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Remarks</th>
+                                    <th>Date</th>
+                                    <th>Entry By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in RemarksList">
+                                    <td>{{$index+1}}</td>
+                                    <td ng-bind="data.Description"></td>
+                                    <td>{{data.CreationDate|date:'dd-MMM-yyyy hh:mm:ss a'}}</td>
+                                    <td ng-bind="data.EntryBy"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>           
+                
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,10 @@
+﻿<div class="pull-left">
+    <a ng-hide="IsStep1" href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Step(true)"></a>
+    <strong>Book Order</strong>
+</div>
+<div class="pull-right">
+    <button class="btn btn-default" ng-hide="IsStep1" type="submit">
+        <i class="fa fa-saved"></i>
+        <strong>{{User.Id==undefined?'Save':'Update'}}</strong>
+    </button>
+</div>

@@ -1,0 +1,38 @@
+﻿<div class="col-md-12">
+    <div class="col-md-2">
+        <strong>Event<br /> Management</strong>
+    </div>
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <div class="input-group col-md-2" style="width:0px;margin-left:0em;">
+                <input class="form-control col-sm-2"
+                       only-numbers
+                       placeholder="School Code"
+                       ng-change="SchMngt.SchCode.length>=5 && SearchSchool_KeyPress(SchMngt.SchCode)"
+                       ng-model="SchMngt.SchCode" />
+                <span class="input-group-addon" ng-click="Search_School()">
+                    <a href="#" style="text-decoration:none">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <button class="btn btn-default"
+                type="button"
+                ng-click="Reset()">
+            <i class="fa fa-refresh"></i><strong> Reset</strong>
+        </button>
+        <button class="btn btn-default" ng-if="SchMngt.SchId!=undefined" type="submit">
+            <i class="fa fa-saved"></i>
+            <strong>{{SchMngt.EventManagement.IsParticipate==true?'Participated':'Participate'}}</strong>
+        </button>            
+        <div class="dropdown" ng-if="SchMngt.EventManagement.Id!=undefined">
+            <button type="button" class="btn btn-default"><i class="fa fa-bars"></i></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#" ng-click="History()"><i class="fa fa-history"></i><strong> History</strong></a>
+                <a href="#" ng-click="Pament()"><i class="fa fa-money"></i><strong> Payment</strong></a>
+                <a href="#" ng-click="StudentEntry()"><i class="fa fa-keyboard-o"></i> <strong>Student Entry</strong></a>
+            </div>
+        </div>       
+    </div>
+</div>

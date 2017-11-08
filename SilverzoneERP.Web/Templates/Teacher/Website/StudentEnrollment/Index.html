@@ -1,0 +1,18 @@
+﻿
+<form name="frm"
+      ng-submit="frm.$valid && Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card col-md-12">
+        <!--Start Create Section-->
+        <div ng-if="isEdit" ng-include="'Templates/Teacher/StudentEnrollment/Partial/Create.html'"></div>
+        <!--End Create Section-->
+        
+        <!--Start List Section-->
+        <div ng-if="!isEdit" ng-include="'Templates/Teacher/StudentEnrollment/Partial/List.html'"></div>    
+        <!--End List Section-->
+    </div>
+</form>

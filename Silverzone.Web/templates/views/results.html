@@ -1,0 +1,542 @@
+﻿<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/result.png" class="img-responsive" alt="silverzone" />
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="books" class="parallax-section">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-center col-md-12">
+                <br>
+                <h1 class="heading bold"><span class="text-white">Search your result </span></h1>
+                <hr class="style17">
+            </div>
+
+            <div class="col-md-12">
+
+                <div class="col-md-12 row">
+                    <div class="panel with-nav-tabs panel-default">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li class="col-md-4 col-xs-12 active"><a href="#" data-toggle="tab" aria-expanded="true" ng-click="assignLevel(1)"> Level-1</a></li>
+                                <li class="col-md-4 col-xs-12"><a href="#" data-toggle="tab" aria-expanded="false" ng-click="assignLevel(2)"> Level-2</a></li>
+                                <li class="col-md-4 col-xs-12"><a href="#" data-toggle="tab" aria-expanded="false" ng-click="assignLevel(3)"> Level-3</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="panel-body"
+                             ng-if="eventModel.levelType === 1 || eventModel.levelType === 2">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="input-group backg">
+
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+
+                                                <select class="form-control"
+                                                        ng-model="eventModel.result_eventId"
+                                                        ng-options="::event.Id as ::event.EventCode for event in ResultEvents">
+                                                    <option value=""> Select Event </option>
+                                                </select>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="input-group backg">
+
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="Search Result Status enter your Enrollment No"
+                                                       ng-model="eventModel.enrolmentNo">
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="input-group backg">
+                                        <button type="button"
+                                                class="btn oran"
+                                                ng-click="findResult()">
+                                            <span class="fa fa-search color" aria-hidden="true">
+                                                Search
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="media" class="parallax-section">
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1 class="heading bold"><span>your </span> Result Status </h1>
+                    <hr class="style17">
+                </div>
+
+                <div class="row">
+                    <div class="container">
+                        <div ng-if="eventModel.levelType === 1 || eventModel.levelType === 2">
+
+                            <div class="details col-md-12">
+                                <div class="text-danger text-center"
+                                     ng-if="!eventList[0].isResult_declared || (srchResult === 0 && dataIs_loaded)">
+                                    <h3>Result date is yet to be declared. The result date will be announced soon.</h3>
+                                </div>
+
+                                <div ng-if="srchResult === 1 && dataIs_loaded">
+                                    <div class="text-left ">
+
+                                        <h2 class="color_red border">Result : {{ ResultMsg.EventName }} - {{ ResultMsg.Level }}</h2>
+                                        <div class="career_block_White">
+
+                                            <b>
+                                                <font face="Verdana" style="font-size: 8pt" color="#FF0000">
+                                                    Roll Number Not Found for {{ ResultMsg.EventName }} - {{ ResultMsg.Level }} Examination!
+                                                </font>
+                                            </b>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <font style="font-size: 8pt; font-weight: 700" face="Verdana">
+                                                        1. Your 12 Digit {{ ResultMsg.EventName }} Enrollment No. should be prefixed with
+                                                        letter 'I'<font style="font-size: 8pt">
+                                                            .
+                                                        </font>
+                                                    </font><br>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <font style="font-size: 8pt; font-weight: 700" face="Verdana">
+                                                        2. Make sure you were eligible for {{ ResultMsg.Level }} examination of {{ ResultMsg.EventName }} <font style="font-size: 8pt">
+                                                            .
+                                                        </font>
+                                                    </font><br>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <font face="Verdana" style="font-size: 8pt">
+                                                        3. Please contact
+                                                        your Teacher/School coordinator at your
+                                                        school to get your {{ ResultMsg.currentYear }} Roll Number.
+                                                    </font>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <font face="Verdana" style="font-size: 8pt">
+                                                        4. Please
+                                                        check your Enrollment Ticket.
+                                                    </font>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <font face="Verdana" style="font-size: 8pt">
+                                                        5. In case
+                                                        your result is not reflected using your 12 digit
+                                                        Enrollment Number, please mail us with your relevant
+                                                        details like School Name, Complete School Address, Your
+                                                        Name, Class, Section and Roll No.
+                                                    </font>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <font face="Verdana" style="font-size: 8pt" color="#FF0000">
+                                                        6. Parents and participants are requested to make all your communications through email
+                                                        only at : <a href="mailto:result@silverzone.org">
+                                                            <font color="#FF0000">result@silverzone.org</font>
+                                                        </a>
+                                                    </font>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if="srchResult.StudName">
+                                    <h3 class="product-title">Participant's Name:&nbsp;<span ng-bind="srchResult.StudName"></span></h3>
+                                    <h3 class="product-title">Events:&nbsp;<span ng-bind="srchResult.eventName"></span></h3>
+                                    <h3 class="product-title">Class:&nbsp;<span ng-bind="srchResult.Class"></span></h3>
+                                    <h3 class="product-title">Enrollment No:&nbsp;<span ng-bind="srchResult.rollNo"></span></h3>
+                                    <h3 class="product-title">Raw Marks:&nbsp;<span ng-bind="srchResult.RawScore"></span></h3>
+                                    <h3 class="product-title">Total Marks:&nbsp;<span ng-bind="srchResult.TotMarks"></span></h3>
+                                    <h3 class="product-title">Olympiad Rank:&nbsp;<span ng-bind="srchResult.olympiadRank"></span></h3>
+                                    <h3 class="product-title">Class Rank:&nbsp;<span ng-bind="srchResult.ClassRank"></span></h3>
+
+                                    <p class="product-description"><span>Eligibility for medal:</span> Class 1st, 2nd and 3rd rank holders with minimum 50% of marks. </p>
+                                    <p class="product-description"><span>Second Level Eligibility :</span>  Not eligible, as Top 500 Olympiad rank holders are qualified. </p>
+                                    <p class="product-description oran"> Hard copy of the result would be sent to school within a month's time!! </p>
+
+                                    <div class="col-md-12 top-buffer">
+                                        <div class="col-md-6 col-xs-12 row">
+                                            <button class="add-to-cart btn btn-default gray" type="button">Download Your Status</button>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12 row">
+                                            <button class="like btn btn-default gray" type="button">Print Your Status</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12 details" style="display:none;">
+                                <p class="product-description">
+                                    To improve your ranking in comming year, we recommend the below shown Excellence Guide for better preperation of all International/National Olympiads. (For Classes 1st to 10th).
+                                    <a ui-sref="book_list" class="btn gray">Click here to buy</a>
+                                </p>
+                                <div><img src="images/Olympiad/result.png" class="img-responsive"></div>
+                            </div>
+
+                        </div>
+
+                        <div ng-if="eventModel.levelType === 3">
+                            <table cellspacing="0" border="0">
+                                <colgroup width="38"></colgroup>
+                                <colgroup width="57"></colgroup>
+                                <colgroup width="43"></colgroup>
+                                <colgroup width="35"></colgroup>
+                                <colgroup width="138"></colgroup>
+                                <colgroup width="139"></colgroup>
+                                <colgroup width="104"></colgroup>
+                                <colgroup width="46"></colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="30" align="left" valign="middle" bgcolor="#0070C0"><b><font color="#FFFFFF">SrNo.</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0"><b><font color="#FFFFFF">Selected</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0"><b><font color="#FFFFFF">Event</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0" sdnum="1033;0;@"><b><font color="#FFFFFF">Class</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0" sdnum="1033;0;@"><b><font color="#FFFFFF">StudName</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0" sdnum="1033;0;@"><b><font color="#FFFFFF">School</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#0070C0" sdnum="1033;0;@"><b><font color="#FFFFFF">StateName</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#0070C0"><b><font color="#FFFFFF">Marks</font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">1</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 1</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="7" sdnum="1033;"><font color="#000000">7</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KASHISH TALWAR</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">LOTUS VALLEY INTERNATIONAL SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">UTTAR PRADESH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="90" sdnum="1033;0;0.00"><font color="#000000">90.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">2</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 2</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="6" sdnum="1033;"><font color="#000000">6</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">PRATAP ADITYA CHANDER</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DELHI PUBLIC SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">MAHARASHTRA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="87.5" sdnum="1033;0;0.00"><font color="#000000">87.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">3</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="8" sdnum="1033;"><font color="#000000">8</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">MOKSHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SACRED HEART CONVENT SR. SEC. SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARYANA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="77.5" sdnum="1033;0;0.00"><font color="#000000">77.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">4</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="12" sdnum="1033;0;@"><font color="#000000">12</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">SIDHARTH BHASIN</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">ST. THOMAS SCHOOL, DWARKA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">New Delhi</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="70" sdnum="1033;0;0.00"><font color="#000000">70.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">5</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">PRACHIR AGARWAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SOMERVILLE SCHOOL, GREATER NOIDA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">UTTAR PRADESH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="67.5" sdnum="1033;0;0.00"><font color="#000000">67.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">6</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="9" sdnum="1033;"><font color="#000000">9</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">TANMAY GUPTA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DELHI PUBLIC SCHOOL, FARIDABAD</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARYANA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="67.5" sdnum="1033;0;0.00"><font color="#000000">67.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">7</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="11" sdnum="1033;0;@"><font color="#000000">11</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">PRATIM MANDAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">VIVEKANANDA MISSION SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">WEST BENGAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="62.5" sdnum="1033;0;0.00"><font color="#000000">62.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">8</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iio16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="12" sdnum="1033;0;@"><font color="#000000">12</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARI OM LOHIA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">L K  SINGHANIA EDUCATION CENTRE</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">RAJASTHAN</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="30" sdnum="1033;0;0.00"><font color="#000000">30.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="8" height="17" align="center" valign="middle" sdnum="1033;0;@"><b><font color="#000000"><br></font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">1</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 1</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="7" sdnum="1033;"><font color="#000000">7</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">PREETHAM R</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">RYAN INTERNATIONAL SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KARNATAKA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="85" sdnum="1033;0;0.00"><font color="#000000">85.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">2</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 2</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="11" sdnum="1033;"><font color="#000000">11</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">AAROHI SHARMA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SCHOLARS ROSARY SR.SEC. SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARYANA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="80" sdnum="1033;0;0.00"><font color="#000000">80.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">3</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="8" sdnum="1033;"><font color="#000000">8</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ALISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">ST. THOMAS SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">JHARKHAND</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="77.5" sdnum="1033;0;0.00"><font color="#000000">77.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">4</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="9" sdnum="1033;"><font color="#000000">9</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">JAHNAVI PANDE</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">O.P.JINDAL SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">CHHATISGARH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="72.5" sdnum="1033;0;0.00"><font color="#000000">72.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">5</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="12" sdnum="1033;"><font color="#000000">12</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">VARUN AGRAWAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">BHAVAN'S B. P. VIDYA MANDIR</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">MAHARASHTRA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="60" sdnum="1033;0;0.00"><font color="#000000">60.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">6</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ANISH M MANDYAM</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">THE BRIGADE SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KARNATAKA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="55" sdnum="1033;0;0.00"><font color="#000000">55.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">7</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ioel17</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="6" sdnum="1033;"><font color="#000000">6</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">VAANIPREET KAUR</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SPRING DALE SR.SEC. PUBLIC SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">PUNJAB</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="50" sdnum="1033;0;0.00"><font color="#000000">50.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="8" height="17" align="center" valign="middle" sdnum="1033;0;@"><b><font color="#000000"><br></font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">1</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="12" sdnum="1033;"><font color="#000000">12</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">MANIAR SIDDHARTH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SHAKTI HIGHER SECONDARY SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">GUJARAT</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;0.00"><font color="#000000">Absent</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">2</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 1</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="6" sdnum="1033;"><font color="#000000">6</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">YASH MISHRA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">D A.V PUBLIC SCHOOL,CHANDRASEKHARPUR</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ODISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="97.5" sdnum="1033;0;0.00"><font color="#000000">97.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">3</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 2</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="8" sdnum="1033;"><font color="#000000">8</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARSHITHA MUTHAVARAPU</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SMART</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">TAMIL NADU</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="95" sdnum="1033;0;0.00"><font color="#000000">95.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">4</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="9" sdnum="1033;"><font color="#000000">9</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KESHARI DIBYAJYOTI MOHANTY</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">BUXI JAGABANDHU ENG. MEDIUM SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ODISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="85" sdnum="1033;0;0.00"><font color="#000000">85.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">5</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="11" sdnum="1033;"><font color="#000000">11</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">RATUL PAN</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DAV  MODEL SCHOOL, DURGAPUR (W.B.)</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">WEST BENGAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="82.5" sdnum="1033;0;0.00"><font color="#000000">82.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">6</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ANURAG JHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">RAWAL INTERNATIONAL SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">HARYANA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="50" sdnum="1033;0;0.00"><font color="#000000">50.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">7</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">iom16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="7" sdnum="1033;"><font color="#000000">7</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">TEJANSH SARA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SANSKRUTI GLOBAL SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ANDHRA PRADESH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="42.5" sdnum="1033;0;0.00"><font color="#000000">42.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="8" height="17" align="center" valign="middle" sdnum="1033;0;@"><b><font color="#000000"><br></font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">1</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="12" sdnum="1033;0;@"><font color="#000000">12</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">MANIAR SIDDHARTH</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">SHAKTI HIGHER SECONDARY SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">GUJARAT</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;0.00"><font color="#000000">Absent</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">2</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 1</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="6" sdnum="1033;"><font color="#000000">6</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">SUGYANI SATAPATHY</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DELHI PUBLIC SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ODISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="97.5" sdnum="1033;0;0.00"><font color="#000000">97.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">3</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000">Topper 2</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="7" sdnum="1033;"><font color="#000000">7</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">SWETA SNIGDHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">D A.V PUBLIC SCHOOL,CHANDRASEKHARPUR</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ODISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="95" sdnum="1033;0;0.00"><font color="#000000">95.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">4</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="9" sdnum="1033;"><font color="#000000">9</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">UJWAL JYOT PANDA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DELHI PUBLIC SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ODISHA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="92.5" sdnum="1033;0;0.00"><font color="#000000">92.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">5</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">ARPAJIT ADHIKARY</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DON BOSCO SCHOOL, AGARTALA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">TRIPURA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="90" sdnum="1033;0;0.00"><font color="#000000">90.00</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">6</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="9" sdnum="1033;"><font color="#000000">9</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KUNAL SAMANTA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">DAV  MODEL SCHOOL, DURGAPUR (W.B.)</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">WEST BENGAL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="87.5" sdnum="1033;0;0.00"><font color="#000000">87.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="51" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">7</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="11" sdnum="1033;0;@"><font color="#000000">11</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">AMAL MATHEW</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">KURIAKOSE ELIAS ENGLISH MEDIUM SCHOOL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">KERALA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="82.5" sdnum="1033;0;0.00"><font color="#000000">82.50</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="34" align="left" valign="middle" sdnum="1033;0;@"><b><font color="#000000">8</font></b></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0"><font color="#000000"><br></font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font color="#000000">ios16</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="8" sdnum="1033;"><font color="#000000">8</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">SUMANTARAJ PAUL</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FCFCD0" sdnum="1033;0;@"><font color="#000000">RAMAKRISHNA MISSION VIDYALAYA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" sdnum="1033;0;@"><font color="#000000">TRIPURA</font></td>
+                                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign="middle" bgcolor="#FCFCD0" sdval="65" sdnum="1033;0;0.00"><font color="#000000">65.00</font></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>

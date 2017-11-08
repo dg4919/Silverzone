@@ -1,0 +1,9 @@
+﻿<div>    
+    <button ng-click="makeSnapshot()">take picture</button>
+    <webcam channel="channel"
+            on-streaming="onSuccess()"
+            on-error="onError(err)"
+            on-stream="onStream(stream)"></webcam>
+  
+    <canvas id="snapshot" width="300" height="300"></canvas>
+</div>

@@ -1,0 +1,55 @@
+﻿<div class="col-md-offset-4">
+    <div class="row">      
+        <div class="form-group col-md-6">
+            <label>Select Event :</label>
+            <select class="form-control"
+                    name="EventId"
+                    ng-options="obj.EventId as obj.EventCode for obj in EventList "
+                    ng-model="StudentEnrollment.EventId"
+                    ng-change="ChangeEvent(StudentEnrollment.EventId)">
+                <option value="">----------Select Event----------</option>
+            </select>            
+        </div>
+    </div>
+    <div class="row">      
+        <div class="form-group col-md-6">
+            <label>Select Exam Date :</label>
+            <select class="form-control"
+                    name="ExaminationDateId"
+                    ng-options="obj.ExaminationDateId as obj.ExamDateFormated for obj in ExamDateList"
+                    ng-model="StudentEnrollment.ExaminationDateId">
+                <option value="">----------Select Exam Date----------</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped responsive" wt-responsive-table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>No. Of Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in ClassList">
+                        <td>{{data.ClassName<10?'0'+data.ClassName:data.ClassName}}</td>
+                        <td>
+                            <input type="number"
+                                   min="0"
+                                   class="form-control"
+                                   ng-change="No_Of_Student_Change()"
+                                   ng-model="data.No_Of_Student" />
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot style="border-top:1px solid;">
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td ng-bind="StudentEnrollment.TotlaEnrollment"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+﻿
+<form name="frm"
+      ng-submit="Search(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        
+        <div class="row">
+           <div class="col-md-12">
+               <div class="form-group col-md-2">
+                   <label>From :</label>
+                   <input type='text'
+                          name="From"
+                          class="form-control"
+                          show-picker
+                          ng-model="Actionfilter.From" />
+               </div>
+               <div class="form-group col-md-2">
+                   <label>To :</label>
+                   <input type='text'
+                          name="To"
+                          class="form-control"
+                          show-picker
+                          ng-model="Actionfilter.To" />
+               </div>
+               <div class="form-group col-md-2">
+                   <label>Event :</label>
+                   <select class="form-control"
+                           ng-model="Actionfilter.EventCode"
+                           name="EventCode"
+                           ng-options="obj as obj for obj in EventCodeList">
+                       <option value="">Select Event</option>
+                   </select>
+               </div>  
+
+               <button type="submit" style="margin-top:25px;" class="btn btn-default">Search</button>             
+           </div>
+            <hr class="style17" />
+            <uib-tabset active="active">
+                <uib-tab index="1"     
+                         ng-click="Tab_Change('Un-Confirm')"                     
+                         heading="Un-Confirm"
+                         disable="tab.disabled">
+                    <div class="col-md-12">
+                        <div class="panel-group">
+                            <div class="panel panel-default" ng-repeat="data in Un_Confirm_OrderList" style="cursor:pointer;">
+                                <div class="panel-heading" data-toggle="collapse" href="#Data_{{data.GuidId}}">
+                                    <div style="color:#317eac;" class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-9">
+                                                <strong>School Name : {{data.SchName}}</strong>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <strong>School Code : {{data.SchCode}}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-5">
+                                                <strong>Order No. : {{data.OrderNo}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Event Code : {{data.EventCode}}</strong>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <strong>Order Date : {{data.OrderDate|date:'dd-MMM-yyyy'}}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="Data_{{data.GuidId}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="col-md-12"><button class="btn btn-default pull-right" ng-click="Confirm(data.OrderNo,false)" type="button">Confirm</button></div>
+                                        <div class="col-md-12">
+                                            <table class="table table-striped responsive" wt-responsive-table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>S.No.</th>
+                                                        <th>Class</th> 
+                                                        <th>Quantity</th>                                                                                                                
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in data.Records">
+                                                        <td>{{Records}}{{$index+1}}</td>
+                                                        <td>{{item.Class}}</td>     
+                                                        <td>{{item.Quantity}}</td>                                                        
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </uib-tab>
+                <uib-tab index="2" 
+                         ng-click="Tab_Change('Confirm')"                                       
+                         heading="Confirm"
+                         disable="tab.disabled">
+                    <div class="col-md-12">
+                        <div class="panel-group">
+                            <div class="panel panel-default" ng-repeat="data in Confirm_OrderList" style="cursor:pointer;">
+                                <div class="panel-heading" data-toggle="collapse" href="#Data_{{data.GuidId}}">
+                                    <div style="color:#317eac;" class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-9">
+                                                <strong>School Name : {{data.SchName}}</strong>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <strong>School Code : {{data.SchCode}}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-5">
+                                                <strong>Order No. : {{data.OrderNo}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Event Code : {{data.EventCode}}</strong>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <strong>Order Date : {{data.OrderDate|date:'dd-MMM-yyyy'}}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="Data_{{data.GuidId}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="col-md-12"><button class="btn btn-default pull-right" ng-click="Confirm(data.OrderNo,true)" type="button">Confirm</button></div>
+                                        <div class="col-md-12">
+                                            <table class="table table-striped responsive" wt-responsive-table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>S.No.</th>
+                                                        <th>Class</th>                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in data.Records">
+                                                        <td>{{Records}}{{$index+1}}</td>
+                                                        <td>{{item.Class}}</td>                                                        
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+                     
+        </div>
+    </div>
+</form>

@@ -1,0 +1,78 @@
+﻿
+<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/download-school.jpg" class=" img-responsive" alt="silverzone" />
+        <!--<div class="overlay"></div>
+        <div class="banner-content text-center">
+            <h2>Downloads</h2> cv
+            <p> Registration Form.for year 2016-17</p>
+            <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Downloads</i></div>
+        </div>-->
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="media" class="parallax-section ">
+    <div id="container_full">
+        <div class="ts-promotional-banner2 parallax-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <h1 class="heading bold"><span>Downloads for</span> School Only </h1>
+                        <p>Download Registration Form. To be used by School only. (Not for students) .</p>
+                        <hr class="style17">
+                    </div>
+
+                    <div ng-repeat="res in schDnd_pdfInfo"
+                         id="{{res.EventCode}}">
+                        <div class="clearfix"
+                             ng-if="$index % 2 == 0"></div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12 text-left downcon">
+
+                            <div class="" style=" background: #f6f6f6; box-shadow: 0 -5px 50px #979797;; padding:1px;margin-bottom:20px;">
+                                <h1 class="heading bold text-center">
+                                    <!--<span class="service-icon"><i class="fa"><img src="Images/sicon.png"></i></span>-->
+                                    {{ res.EventName }}
+                                </h1>
+                            </div>
+                            <div class="col-md-6">
+                           <div class="section-title">
+                        <h1 class="heading bold text-center" style="font-size:20px;"><span> </span>PDF </h1> </div>
+                                  <ul class="fa-ul" style="border-right:1px solid #f4f4f4;">
+                                    <li class="space"
+                                        ng-repeat="pdf in res.Data[1].FileDetails">
+                                        <i class="fa-li fa fa-arrow-circle-o-right fa-2x"></i>
+                                        <a href="#"
+                                           ng-click="downloadFile(pdf.dndUrl)">
+                                            {{ pdf.FileName }} (PDF)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="section-title">
+                        <h1 class="heading bold text-center" style="font-size:20px;"><span> </span>EXCEL</h1> </div>
+                                <ul class="fa-ul">
+                                    <li class="space"
+                                        ng-repeat="excel in res.Data[0].FileDetails">
+                                        <i class="fa-li fa fa-arrow-circle-o-right fa-2x"></i>
+                                        <a href="#"
+                                           ng-click="downloadFile(excel.dndUrl)">
+                                            {{ excel.FileName }} (Excel)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>

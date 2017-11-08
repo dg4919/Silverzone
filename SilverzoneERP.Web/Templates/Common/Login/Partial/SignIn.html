@@ -1,0 +1,59 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <img src="images/teacher.png" class="img-responsive">
+        </div>
+
+        <div class="col-md-5 ">
+            <div class="row" style="margin-top:20px;margin-right:20px;">
+                <div class="col-xs-12 col-sm-12 col-md-12 ">
+                    <form name="frm"
+                          ng-submit="Login(frm)"
+                          ng-validate="validationOptions"
+                          novalidate="novalidate">
+
+                        <fieldset>
+                            <h2 class="text-center">Sign In</h2>
+                            <hr>
+                            <div class="form-group">
+                                <input type="email"
+                                       name="EmailID"
+                                       class="form-control input-lg"
+                                       ng-model="Account.EmailID"
+                                       placeholder="Email-ID"
+                                       autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="password"
+                                       name="Password"
+                                       class="form-control input-lg"
+                                       placeholder="Password"
+                                       ng-model="Account.Password">
+                            </div>
+                            <span class="button-checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember_me" checked="checked" class="">
+                                    Remember Me
+                                </label>
+                                <a href="" class="btn btn-link pull-right">Forgot Password?</a>
+                            </span>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <input type="submit"
+                                           class="btn btn-lg btn-success btn-block"
+                                           value="Sign In">
+                                </div>
+                                <div ng-if="IsShowReg" class="col-xs-6 col-sm-6 col-md-6">
+                                    <a href="" 
+                                       class="btn btn-lg btn-primary btn-block"
+                                       ng-click="Action(false,true)">Register</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

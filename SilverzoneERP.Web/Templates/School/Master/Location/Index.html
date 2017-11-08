@@ -1,0 +1,32 @@
+﻿
+<section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+<div class="sz_card">
+    <uib-tabset active="active">
+        <uib-tab index="1" heading="Country" disable="tab.disabled">    
+            <!--Start Add Fields-->
+            <div ng-include="'/Templates/School/Master/Location/Country.html'"></div>
+            <!--End Add Fields-->      
+        </uib-tab>
+        <uib-tab index="2" heading="Zone" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <div ng-include="'/Templates/School/Master/Location/Zone.html'"></div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="3" heading="State" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <div ng-include="'/Templates/School/Master/Location/State.html'"></div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="4" heading="District" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <div ng-include="'/Templates/School/Master/Location/District.html'"></div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="5" heading="City" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <div ng-include="'/Templates/School/Master/Location/City.html'"></div>
+            <!--End Add Fields-->
+        </uib-tab>        
+    </uib-tabset>
+</div>

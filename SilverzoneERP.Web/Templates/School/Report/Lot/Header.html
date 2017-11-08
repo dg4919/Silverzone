@@ -1,0 +1,81 @@
+﻿<div class="col-md-12">
+    <div class="col-md-2">
+        <a ng-show="isEdit" href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Back()"></a>
+        <strong>Lot</strong>
+    </div>
+    <div class="col-md-10">
+        <div class="col-md-3"   ng-if="!isEdit">
+            <input class="form-control" ng-model="Search.LotNo" placeholder="Lot No." />
+        </div>
+
+        <div class="col-md-4"   ng-if="!isEdit">
+            <div class="input-group col-md-2" style="width:0px;margin-left:0em;">
+                <input class="form-control col-sm-2"
+                       only-numbers
+                       placeholder="School Code"                      
+                       ng-model="SchMngt.SchCode" />
+                <span class="input-group-addon" ng-click="Search_School()">
+                    <a href="#" style="text-decoration:none">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+
+        <button class="btn btn-default"
+                ng-if="!isEdit"
+                ng-click="Lot_Search()"
+                type="button">
+            <i class="fa fa-saved"></i>
+            <strong>Search</strong>
+        </button>
+
+        <select name="Level"
+                ng-if="SchoolList.length && isEdit"
+                ng-model="Search.Level"
+                ng-options="obj.Id as obj.Name for obj in Lot_Option.Level">
+            <option value="">--Level--</option>
+        </select>
+        <select name="LotType"
+                ng-if="SchoolList.length && isEdit"
+                ng-model="Search.LotType"
+                ng-options="obj.Id as obj.Name for obj in Lot_Option.LotType">
+            <option value="">--LotType--</option>
+        </select>
+
+        <button class="btn btn-default"
+                ng-if="SchoolList.length && isEdit"
+                type="button"
+                ng-click="CreateLot()">
+            <strong>Create Lot</strong>
+        </button>
+        <button class="btn btn-default"
+                ng-if="isEdit"
+                type="button"
+                ng-click="Reset()">
+            <strong>Reset</strong>
+        </button>
+        <button class="btn btn-default"
+                ng-if="SchoolList.length"
+                type="button"
+                ng-click="exportData()">
+            <strong>Export</strong>
+        </button>
+        <button class="btn btn-default"
+                ng-if="isEdit"
+                type="submit">
+            <i class="fa fa-saved"></i>
+            <strong>Search</strong>
+        </button>
+        <button class="btn btn-default"                
+                type="button"
+                ng-click="GenerateReport($event,null)">
+            <i class="fa fa-saved"></i>
+            <strong>Report</strong>
+        </button>
+
+        <a ng-if="!isEdit" class="pull-right" href="#" style="text-decoration:none;" ng-click="Add()"><i class="fa fa-plus"></i></a>
+    </div>
+</div>
+
+

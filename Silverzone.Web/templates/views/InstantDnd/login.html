@@ -1,0 +1,151 @@
+﻿
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <div class="overlay"></div>
+        <div class="banner-content text-center">
+            <h2>Instant-Downloads</h2>
+            <p> download Past Year Question Paper </p>
+            <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Downloads</i></div>
+        </div>
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="pastyear">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h1 class="heading bold"><i class="fa fa-download"></i><span>instant download </span>Past Year Question Paper </h1>
+                <hr class="style17">
+            </div>
+            <div class="col-md-12">
+                <h2 class="heading">
+                    To access purchased download, Fill information and proceed. to purchase more papers click here.
+                </h2>
+            </div>
+            <div class="col-md-6" data-wow-delay="0.3s">
+                <img src="images/InstantDownload_Main.jpg" class="img-thumbnail" style="width:100%" alt="" />
+
+            </div>
+
+            <div class="col-md-6" data-wow-delay="0.3s">
+
+                <div id="loginbox" style="margin-top:5px;" class="mainbox ">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title text-center orn">Information Required</div>
+                        </div>
+
+                        <div style="padding-top:30px" class="panel-body">
+
+                            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                            <form class="form-horizontal"
+                                  name="instantDnd_form"
+                                  ng-submit="submit(instantDnd_form)"
+                                  ng-validate="validationOptions">
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" name="email"
+                                           placeholder="your Email id"
+                                           ng-model="userInfo.email">
+                                </div>
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                                    <input type="tel" class="form-control"
+                                           name="mobile"
+                                           ng-model="userInfo.mobileNo"
+                                           placeholder="Your Mobile no">
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12">
+                                        <button type="submit"
+                                                class="btn oran btn-block">
+                                            FIND
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-left pull-right ">
+                    If you want to make a new purchase, .....
+                    <a ui-sref="InstantDownloads"
+                       class="oran btn">
+                        Click Here...
+                    </a>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="row"
+         ng-if="pdfList.length">
+        <div class="col-md-offset-1 col-md-10"
+             style="margin-top: 30px;">
+
+            <table class="table table-hover text-center"
+                   style="border: 1px solid #d88888;">
+
+                <thead>
+                    <tr class="text-center">
+                        <th>S.No</th>
+                        <th>Order Code</th>
+                        <th>Order Date</th>
+                        <th>Class</th>
+                        <th>Paper Year</th>
+                        <th>Paper Level</th>
+                        <th>Subject</th>
+                        <th>Expire Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="res in pdfList">
+                    <tr style="background: #f9c9c9;">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ res.OrderId }}</td>
+                        <td>{{ res.CreationDate | dateFormat: 'DD/MM/YYYY' }}</td>
+                        <td>{{ res.className }}</td>
+                        <td>{{ res.YearId }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="newRes in res.subjects">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td> Level {{ newRes.LevelId }}</td>
+                        <td>{{ newRes.subjectName }}</td>
+                        <td>{{ newRes.ExpireDate | dateFormat: 'DD/MM/YYYY' }}</td>
+                        <td>
+                            <span ng-if="newRes.isExpired">Download Expired</span>
+                            <i class="fa fa-arrow-circle-down fa-lg"
+                               ng-if="!newRes.isExpired"
+                               ng-class="{ 'fa-2x':  isHover }"
+                               style="color: #adadad;cursor: pointer; transition: .2s ease-out;"
+                               ng-mouseover="isHover = true"
+                               ng-mouseleave="isHover = false"
+                               ng-click="downloadPdf(newRes.Id)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+<partners></partners>

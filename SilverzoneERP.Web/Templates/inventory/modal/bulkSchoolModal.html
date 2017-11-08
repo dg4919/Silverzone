@@ -1,0 +1,123 @@
+﻿<style>
+    .modalWidth .modal-dialog {
+        width: 1200px;
+    }
+
+        .modalWidth .modal-dialog .modal-content .modal-header {
+            padding: 10px 10px 0px;
+        }
+
+        .modalWidth .modal-dialog .modal-content .modal-body .customScroll {
+            overflow: hidden;
+            height: 335px;
+            overflow-y: scroll;
+        }
+</style>
+
+<div class="modal-header">
+    <h4 class="box-title">Search School</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group col-md-4">
+                <label for="inputEmail3" class="control-label col-sm-12">State</label>
+                <div class="col-sm-12">
+                    <select class="form-control"
+                            ng-model="model.StateId"
+                            ng-options="::state.Id as ::state.StateName for state in cityModel.states">
+
+                        <option value=""> --- Select State --- </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail3" class="control-label col-sm-12">District</label>
+                <div class="col-sm-12">
+                    <select class="form-control"
+                            ng-model="model.DistrictId"
+                            ng-options="::district.Id as ::district.DistrictName for district in cityModel.districts">
+
+                        <option value=""> --- Select District --- </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="inputEmail3" class="control-label col-sm-12">City</label>
+                <div class="col-sm-12">
+                    <select class="form-control"
+                            ng-model="model.CityId"
+                            ng-options="::city.Id as ::city.CityName for city in cityModel.cities">
+
+                        <option value=""> --- Select City --- </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row" style="margin: 10px -92px 0px;">
+        <div class="col-md-2 pull-right">
+            <button type="button" class="btn btn-default btn-sm" ng-click="search()">
+                <i class="fa fa-search"></i>
+                Search
+            </button>
+        </div>
+    </div>
+
+     <h3 ng-if="!schList.length && schList !== null"
+        class="text-danger"
+        style="padding: 25px 0px;">
+        Oops ! we did not found any school :(
+        <br />
+        Try another !
+    </h3>
+
+    <div class="customScroll" ng-if="schList.length">
+        <table class="table table-striped responsive"
+               wt-responsive-table>
+            <thead>
+                <tr>
+                    <th>
+                        Select<input type="checkbox"
+                                     class="checkbox"
+                                     ng-model="model.checkSts"
+                                     ng-click="toggleCheck(model.checkSts)" />
+                    </th>
+                    <th>S.No</th>
+                    <th>School Name</th>
+                    <th>School Code</th>
+                    <th>School Address</th>
+                    <th>City</th>
+                    <th>District</th>
+                    <th>state</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sch in schList">
+                    <td><input type="checkbox" class="checkbox" ng-model="sch.isChecked" /></td>
+                    <td>{{ $index+1 }}</td>
+                    <td ng-bind="::sch.SchName"></td>
+                    <td ng-bind="::sch.SchCode"></td>
+                    <td ng-bind="::sch.SchAddress"></td>
+                    <td ng-bind="::sch.StateName"></td>
+                    <td ng-bind="::sch.DistrictName"></td>
+                    <td ng-bind="::sch.CityName"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal-footer" style="border: none;">
+        <span class="col-sm-2" style="padding: 0px;">
+            <button class="btn btn-danger pull-left" ng-click="ok(false)">Delete</button>
+        </span>
+        <button class="btn btn-info pull-right" ng-click="ok(true)">
+            <i class="fa fa-plus"></i>
+            Add
+        </button>
+    </div>
+
+</div>
+

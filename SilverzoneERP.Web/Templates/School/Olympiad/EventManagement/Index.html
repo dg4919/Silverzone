@@ -1,0 +1,37 @@
+﻿<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+    
+    <div class="sz_card">
+        <!--<div class="row">
+            <div class="col-md-4">                         
+                <custom-auto_complete list="CoOrdinatorList"
+                                      srch-txt="srchTxt.Name"
+                                      on:change="CoOrdName_Change(param)"
+                                      on:select="selectItem(param)">
+                </custom-auto_complete>                           
+            </div>
+            <input class="form-control" type="text">
+        </div>-->        
+        
+        <div class="row" ng-if="SchMngt.SchId!=undefined">          
+            <!--Start Create Section-->
+            
+
+            <div ng-include="'Templates/School/Olympiad/EventManagement/Partial/School_Details.html'"></div>
+
+            <div class="col-md-12" ng-include="'Templates/School/Olympiad/EventManagement/Partial/CoOrdinator.html'"></div>
+
+            <div class="col-md-12" ng-include="'Templates/School/Olympiad/EventManagement/Partial/Courier.html'"></div>
+            
+            <div class="col-md-12" ng-include="'Templates/School/Olympiad/EventManagement/Partial/Class_Details.html'"></div>
+
+            <div class="col-md-12" ng-include="'Templates/School/Olympiad/EventManagement/Partial/CoOrdinating_Teachers.html'"></div>
+                        
+            <!--End Create Section-->
+        </div>
+    </div>
+</form>

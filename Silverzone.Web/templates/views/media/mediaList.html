@@ -1,0 +1,56 @@
+﻿
+
+ <div class="row heig"></div>
+     <!-- start banner section -->
+      <section id="banner">
+<div class="banner ts-faq-banner parallax-section">
+<img src="images/media.jpg" class=" img-responsive" alt="silverzone" />
+        <!--<div class="overlay"></div>
+        <div class="banner-content text-center">
+            <h2>Downloads</h2> cv
+            <p> Registration Form.for year 2016-17</p>
+            <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Downloads</i></div>
+        </div>-->
+    </div>
+</section>
+
+<!-- End banner section -->
+<news-updates></news-updates>
+<!-- End Home section -->
+<section id="prizes">
+    <div class="container">
+        <div class="section-title">
+            <h1 class="heading bold"><i class="fa fa-"></i><span>Media </span> Coverage</h1>
+            <hr class="style17">
+        </div>
+        
+        <div ng-repeat="media in mediaList">
+
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <h3 style="font-size: large;margin: 0px 0px 7px 0px !important;font-family: inherit;color:#111;"
+                    class="text-info"
+                    ng-bind="media.Description"></h3>
+
+                <div class="clearfix" ng-if="$index % 4 == 0"></div>
+
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h4 ng-bind="media.category + ' - ' + media.year"></h4>
+                        <p ng-bind="media.Description"></p>
+                        <p>
+                            <a ui-sref="media_Detail({ galleryId: media.Id })"
+                               class="label label-default gray">
+                                View media
+                            </a>
+                        </p>
+                    </div>
+                    <img ng-src="{{ media.ImageUrl }}"
+                         alt="..."
+                         class="img-responsive"
+                         style="height: 250px;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

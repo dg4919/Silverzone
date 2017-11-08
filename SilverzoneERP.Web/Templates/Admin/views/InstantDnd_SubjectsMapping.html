@@ -1,0 +1,66 @@
+﻿<style>
+    .form-group .form-control1.has-error {
+        border: 1px solid #dd4b39;
+    }
+
+    .disable-row {
+        z-index: 1000000;
+        opacity: .5;
+        pointer-events: none;
+    }
+</style>
+
+<div class="col-sm-12">
+
+    <form name="rcVisitForm"
+          ng-submit="submit_data()">
+
+        <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+        <div class="sz_card">
+
+            <div ng-show="isEdit">
+
+                    <div class="row">
+
+                        <label>Select Year</label>
+                        <div class="form-group col-md-12">
+                            <label class="radio-inline"
+                                   ng-repeat="previousYrQP in json.previousYrQp">
+                                <input type="radio"
+                                       name="year_radio"
+                                       ng-model="model.yearId"
+                                       value="{{ previousYrQP.Id }}">
+                                {{ previousYrQP.year }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped responsive"
+                           wt-responsive-table>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th ng-repeat="subject in json.subjectList"
+                                    ng-bind="subject.Name"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="class in json.classList">
+                                <td ng-bind="::class.className"></td>
+                                <td class="text-center"
+                                    ng-repeat="subject in json.subjectList">
+                                    <input type="checkbox" 
+                                           ng-model="Sts[i]"
+                                           ng-click="checkItem(class, Sts[i], subject.Id)" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </form>
+
+
+</div>

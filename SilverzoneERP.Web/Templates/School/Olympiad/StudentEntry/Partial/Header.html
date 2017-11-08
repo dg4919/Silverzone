@@ -1,0 +1,23 @@
+﻿<div class="pull-left">
+    <a ng-if="Parameter!=null" href="#" style="text-decoration:none" class="fa fa-arrow-left" ng-click="Back()"></a>
+    <strong>Student Entry</strong>
+</div>
+<div class="pull-right">   
+    <button class="btn btn-default"
+            type="button"
+            ng-click="Reset(0,1)">
+        <i class="fa fa-refresh"></i><strong> Refresh</strong>
+    </button>
+    <button ng-if="SchMngt.EventManagement!=undefined" class="btn btn-default" type="button" ng-click="ShowClassWise()">
+        <strong>Show Classwise Total</strong>
+    </button>
+    <button class="btn btn-default"
+            type="button"
+            ng-click="Search_School()">
+        <i class="fa fa-search"></i><strong> School</strong>
+    </button>
+    <button class="btn btn-default" ng-if="SchMngt.EventManagement.Id!=undefined && StudentEntryList.length!=SchMngt.EventManagement.TotalEnrollmentSummary" type="submit">
+        <i class="fa fa-saved"></i>
+        <strong>{{SchMngt.Id==undefined?'Save':'Update'}}</strong>
+    </button>
+</div>

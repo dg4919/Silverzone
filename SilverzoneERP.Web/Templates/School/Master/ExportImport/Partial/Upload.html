@@ -1,0 +1,87 @@
+﻿<script>
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+            });
+        });
+        // File Input
+
+        $(document).on('change', '.btn-file :file', function () {
+
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+
+        });
+</script>
+<div class="col-md-12 sz_section">     
+    <h3 ng-if="verifyDocSection||resultDocSection">
+        <a href="#"
+           style="text-decoration:none;color:white;"
+           class="fa fa-arrow-left"
+           ng-click="Back()">
+        </a>
+       {{verifyDocSection==true?'Document verified':'Successfully uploded'}} 
+    </h3>
+    <h3 ng-if="uploadSection">Import Excel File</h3>        
+</div>
+<div class="col-md-12" style="border:1px #ccc solid; margin-top:-5px;padding-top:25px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="form-group" ng-show="uploadSection">
+                    <div class="input-group">
+                        <input type="text" id="FileReadOnly" class="form-control" readonly>
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                Browse&hellip; <input type="file" id="file1" name="file" ng-files="getTheFiles($files)" accept=".xlsx" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input class="btn btn-primary"
+                       type="button"
+                       ng-click="uploadFiles()"
+                       value="Upload"
+                       ng-if="uploadSection" />
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="col-md-8 pull-right">
+                    <div class="input-group col-md-6"
+                         ng-if="uploadedData.Data && uploadSection"
+                         style="width:0px;margin-left:0em;">
+                        <select ng-model="dt.ImportType" class="form-control"
+                                ng-options="::data for data in list">
+
+                            <option value="">---Select Type---</option>
+                        </select>
+                        <span class="input-group-addon" ng-click="Verify(dt.ImportType)">
+                            <a href="#" style="text-decoration:none">
+                                <i class="fa fa-check"></i><strong> Verify</strong>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <input ng-if="VerifyData.Correct.length!=0 && verifyDocSection"
+                       class="pull-right btn btn-primary"
+                       type="button"
+                       ng-click="Submit()"
+                       value="Submit" />
+
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-include="'Templates/School/ExportImport/Partial/Upload_Data.html'"></div>
+</div>

@@ -1,0 +1,39 @@
+﻿<div class="col-md-12">
+    <div class="col-md-4">        
+        <strong>Dispatch Question Paper</strong>
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-5">
+            <div class="input-group col-md-5" style="width:0px;margin-left:0em;">
+                <span class="input-group-addon">
+                    <label>Lot No.</label>
+                </span>
+                 <select name="LotNo"
+                         ng-change="LotNo_Changed(Search.Id)"
+                         class="form-control col-sm-4"
+                         ng-options="obj.Id as obj.LotNo for obj in LotNoList"
+                         ng-model="Search.Id">
+                    <option value="">Lot No.</option>
+                </select>                
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="input-group col-md-5" style="width:0px;margin-left:0em;">
+                <span class="input-group-addon">
+                    <label>Reg. No.</label>
+                </span>
+                <select name="EventManagementId"
+                        class="form-control col-sm-4"
+                        ng-change="RegNo_Changed(Search.EventManagementId)"
+                        ng-options="obj.EventManagementId as obj.RegNo for obj in RegNoList"
+                        ng-model="Search.EventManagementId">
+                    <option value="">Reg. No.</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" ng-if="QPDispatchDetail" class="btn btn-default">Save</button>
+           
+    </div>
+</div>
+
+

@@ -1,0 +1,130 @@
+﻿<form name="frm"
+      ng-submit="GenerateReport(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <div class="modal-content">
+        <div class="modal-header sz_section row">
+            <a href="#"
+               ng-click="Back()"
+               style="color:white;">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <strong>Report</strong>
+            <button type="submit"
+                    class="pull-right btn btn-default">
+                <i class="fa fa-saved"></i> <strong>Generate</strong>
+            </button>
+        </div>
+
+        <div class="modal-body">            
+            <div class="row col-md-offset-1">     
+                <div class="col-md-5" style="border:2px gray dotted;padding-bottom:30px;padding-top:30px;">                    
+                    <table>
+                        <tr ng-if="Param.LotNo"><td><strong>Lot No.</strong></td><td>:</td><td>{{Param.LotNo}}</td></tr>
+                        <tr>
+                            <td><strong>Lot Type</strong></td>
+                            <td>:</td>
+                            <td>
+                                <select name="LotType"
+                                        class="form-control"
+                                        ng-disabled="Param.LotNo!=null"
+                                        ng-model="Param.SelectedLotType"
+                                        ng-options="obj.Id as obj.Name for obj in Param.LotType">
+                                    <option value="">--Lot Type--</option>                                
+                                </select>                                                                   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exam Level</strong></td>
+                            <td>:</td>
+                            <td>
+                                <select name="Level"
+                                        class="form-control"
+                                        ng-disabled="Param.LotNo!=null"
+                                        ng-model="Param.SelectedLevel"
+                                        ng-options="obj.Id as obj.Name for obj in Param.Level">
+                                    <option value="">--Level--</option>
+                                </select>                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Event</strong></td>
+                            <td>:</td>
+                            <td>                             
+                                <select name="EventId"
+                                        class="form-control"
+                                        ng-disabled="Param.LotNo!=null"
+                                        ng-model="Param.EventId"
+                                        ng-options="obj.EventId as obj.EventCode for obj in EventInfo">
+                                    <option value="">--Select Event--</option>
+                                </select>                                
+                            </td>                                                      
+                        </tr>
+                        <tr>
+                            <td><strong>ExamDate</strong></td>
+                            <td>:</td>
+                            <td>
+                                <select class="form-control"
+                                        ng-disabled="Param.LotNo!=null"
+                                        name="ExaminationDateId"
+                                        ng-model="Param.ExaminationDateId">
+                                    <option value="">----------Select Exam Date----------</option>
+                                    <option value="{{obj.ExaminationDateId}}" ng-repeat="obj in Param.ExamDateList">{{obj.ExamDate}}</option>
+                                    <option value="-1">Change Exam Date</option>
+                                    <option value="-2">Unknown</option>
+                                </select>                                                                                                             
+                                <!--{{Param.ExamDate|date:'dd-MMM-yyyy'}}-->
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+                                           
+                <div class="form-group col-md-5">
+                    <label>Report :</label>
+                    <select class="form-control" name="ReportName" ng-model="Action.ReportName">
+                        <option value="">---------Select Report---------</option>
+                        <option value="RptQPDispatchLetter_Common">Question Paper Letter</option>
+                        <option value="StudentAttendance">Student Attendance Sheets</option>
+                        <option value="TeacherCorrectionList">Teacher's Name Correction list</option>
+                        <option value="EnrollmentTicket">Enrollment Ticket</option>
+                        <option value="RptOMRLetter">OMR Latter for Class 3 To 5</option>
+                        <option value="OMRPrintForClass3To5">OMR Print for Class 3 To 5</option>
+                        <option value="RptBoxSticker_3x8">Sticker (3x8) 3 Set</option>
+                        <option value="QPAddressLebel_1x4">QP Address Lebel(1x4)</option>``                        
+                        <option value="OMRForClasses6to12">6 To 12 OMR</option>                                               
+                        <option value="RptStudentSummary">Student Summary</option>                                               
+                        <option value="RptQPSelfAddress_Sticker_1x2">QP Self Address Sticker(1/2)</option>                                               
+                        <option value="RptQPSelfArressSticker_1x4">QP Self Address Sticker(1/4)</option>`` 
+                        <option value="PackingList">Packing List Printing</option>                                               
+                    </select>
+                </div>
+                <div ng-if="Param.LotNo==null" class="form-group col-md-5">
+                    <label>Filter :</label>
+                    <select class="form-control" 
+                            name="LotFilter" 
+                            ng-model="Action.LotFilter"
+                            ng-change="Action.ExamDate=''"
+                            ng-options="obj.Id as obj.Name for obj in Param.LotFilter">
+                        <option value="">---------Select Filter---------</option>                                              
+                    </select>
+                </div>
+                <!--<div class="col-md-5" ng-if="Action.LotFilter==3||Action.LotFilter==4">
+                    <label>Date :</label>
+                    <input type='text'
+                           name="ExamDate"
+                           class="form-control"
+                           exam-date-picker
+                           ng-model="Action.ExamDate" />
+                    
+                </div>-->
+            </div>
+
+            <hr class="style17" />
+
+            <div>
+
+            </div>
+        </div>
+    </div>
+</form>

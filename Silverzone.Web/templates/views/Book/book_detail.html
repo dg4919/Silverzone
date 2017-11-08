@@ -1,0 +1,188 @@
+﻿<style>
+    .product-description span {
+        color: #565656;
+    }
+
+    .product-description .collapse-text-toggle {
+        color: #fd4326;
+        cursor: pointer;
+    }
+</style>
+
+<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="/images/booklist.png" class="img-responsive" alt="silverzone" />
+        <!--<div class="overlay"></div>
+        <div class="banner-content text-center">
+            <h2>Buy Books / Combo</h2>
+            <p>Buy Excellence Guide & All Question Paper Books</p>
+            <div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> <i>Books</i></div>
+        </div>-->
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section class="parallax-section">
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1 class="heading bold"><span>Silverzone Olympiad  </span>Books Details</h1>
+                    <hr class="style17">
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 colxs">
+                            <p style="position: absolute;z-index: 10;font-size: 18px;font-weight: 600;right: 119px;margin-top: 24px;width: 30px;"
+                               ng-bind="bookDetail.bookInfo.classId">
+                            </p>
+                            <img class="img-thumbnail"
+                                 ng-src="{{ bookDetail.bookInfo.BookImage && bookDetail.bookInfo.BookImage }}" />
+                        </div>
+                        <div class="details col-md-6 ">
+                            <h3 class="product-title">{{ bookDetail.bookInfo.book_title }} </h3>
+                            <div class="rating" style="display:none;">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <span class="review-no">41 reviews</span>
+                            </div>
+
+                            <p class="product-description"
+                               dd-text-collapse
+                               dd-text-collapse-max-length="145"
+                               dd-text-collapse-text="{{ bookDetail.bookInfo.BookDescription }}"
+                               style="text-align: justify;">
+                            </p>
+
+                            <span><h4 class="price"> {{bookDetail.bookInfo.Class }}</h4></span>
+
+                            <span>
+                                <h4 class="totalprice">
+                                    Total price: <i class="fa fa-inr"></i>
+                                    <span ng-bind="::bookDetail.bookInfo.Price"
+                                          ng-style="bookDetail.bookInfo.CouponInfo && { 'text-decoration' : 'line-through' }">
+                                    </span>
+                                </h4>
+                            </span>
+                            <span ng-hide="!bookDetail.bookInfo.CouponInfo">
+                                <h4 class="price">Discount price: <span><i class="fa fa-inr"></i>{{ bookDetail.bookInfo.CouponInfo.book_newPrice }}</span></h4>
+                            </span>
+                            <span>
+                                <h4 class="price">
+                                    {{ bookDetail.bookInfo.In_stock ? 'In Stock': 'Out of Stock' }}
+                                </h4>
+                            </span>
+
+                            <p class="vote"
+                               ng-if="bookDetail.combo.combo_status">
+                                This Book is also available in Bundle <strong>
+                                    ( <a class="sitecolor" ui-sref="book_list({classId: bookDetail.bookInfo.classId, subjectId: bookDetail.bookInfo.subjectId})">Click Here </a>)
+                                </strong>
+                            </p>
+
+                            <div class="row">
+                                <span>
+                                    <div class="col-md-3 col-sm-6 col-sm-6 col-xs-6 "><h4 class="price">Quantity: <span></span></h4></div>
+                                </span>
+                                <span>
+                                    <div class="col-md-4 col-sm-6 col-xs-6">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                        class="quantity-left-minus btn btn-default btn-number"
+                                                        ng-click="bookDetail.addCartqty(false)">
+                                                    <span class="glyphicon glyphicon-minus"></span>
+                                                </button>
+                                            </span>
+
+                                            <input type="text"
+                                                   class="form-control input-number"
+                                                   maxlength="2"
+                                                   ng-model="bookDetail.book_cart_count"
+                                                   ng-keyup="bookDetail.check_cart()">
+
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                        class="quantity-right-plus btn btn-default btn-number"
+                                                        ng-click="bookDetail.addCartqty(true)">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="col-md-12 top-buffer">
+
+                                <div class="col-md-6 col-xs-6 row">
+                                    <button class="add-to-cart btn btn-default gray"
+                                            type="button"
+                                            ng-click="bookDetail.bookInfo.In_stock && bookDetail.addtoCart(bookDetail.bookInfo, bookDetail.book_cart_count)"
+                                            ng-disabled="!bookDetail.bookInfo.In_stock">
+                                        add to cart
+                                    </button>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <a class="like btn btn-default gray"
+                                       ui-sref="book_list">
+                                        <i class="fa fa-arrow-left "></i>
+                                        Back to list
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="mobile" class="parallax-section"
+         ng-if="bookDetail.suggestionList.length">
+    <div id="container_full">
+        <div class="section-title text-center">
+            <h1 class="heading bold"><span>Suggestion </span>for you </h1>
+            <hr class="style17">
+        </div>
+        <div class="container">
+            <div class="row top-buffer">
+                <div class="col-xs-12 col-sm-6 col-md-3"
+                     ng-repeat="bookInfo in bookDetail.suggestionList">
+                    <bind-Books book="bookInfo"></bind-Books>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="media" class="parallax-section"
+         ng-if="bookDetail.recommendList.length">
+    <div id="container_full">
+
+        <div class="section-title text-center">
+            <h1 class="heading bold"><span>Recommend </span>for you </h1>
+            <hr class="style17">
+        </div>
+        <div class="container">
+            <div class="row top-buffer">
+                <div class="col-xs-12 col-sm-6 col-md-3"
+                     ng-repeat="bookInfo in bookDetail.recommendList">
+                    <bind_Books book="bookInfo"></bind_Books>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partners></partners>

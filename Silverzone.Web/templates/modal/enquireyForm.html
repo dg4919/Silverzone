@@ -1,0 +1,89 @@
+﻿
+<div class="modal-header">
+    <button type="button" class="close" style="color: #000;" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title text-center">ENQUIRY</h4>
+    <hr class="style17">
+</div>
+
+<div class="modal-body">
+  
+      <form class="well form-horizontal"
+          name="enquiryForm"
+          ng-submit="submitForm(enquiryForm)"
+          ng-validate="validationOptions">
+
+        <fieldset>
+            <!-- Form Name -->
+            <legend class="text-center">Please Fill The Form</legend>
+            <!-- Text input-->
+            <div class="input-group form-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input name="name" placeholder="Your Name" class="form-control" type="text" ng-model="model.UserName">
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input name="email" placeholder="Your Email Id" class="form-control" type="text" ng-model="model.EmailId">
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                <input name="phone" placeholder="9876543210" class="form-control" type="text" ng-model="model.Mobile" number:only>
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
+                <select name="state" class="form-control selectpicker" placeholder="State" ng-model="model.Country">
+                    <option value="">Please select your state</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar </option>
+                    <option value="Andhra Pradesh">Andhra Pradesh </option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh </option>
+                    <option value="Assam">Assam </option>
+                    <option value="Bihar">Bihar </option>
+                    <option value="Chandigarh">Chandigarh </option>
+                    <option value="Chhattisgarh">Chhattisgarh </option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi </option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli </option>
+                    <option value="Goa">Goa </option>
+                    <option value="Gujarat">Gujarat </option>
+                    <option value="Himachal Pradesh">Himachal Pradesh </option>
+                    <option value="Haryana">Haryana </option>
+                    <option value="Jharkhand">Jharkhand </option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir </option>
+                    <option value="Karnataka">Karnataka </option>
+                    <option value="Kerala">Kerala </option>
+                    <option value="Lakshadweep">Lakshadweep </option>
+                    <option value="Maharashtra">Maharashtra </option>
+                    <option value="Meghalaya">Meghalaya </option>
+                    <option value="Manipur">Manipur </option>
+                    <option value="Madhyapradesh">Madhyapradesh </option>
+                    <option value="Mizoram">Mizoram </option>
+                    <option value="Nagaland">Nagaland </option>
+                    <option value="Orissa">Orissa </option>
+                    <option value="Punjab">Punjab </option>
+                    <option value="Pondichery">Pondichery </option>
+                    <option value="Rajasthan">Rajasthan </option>
+                    <option value="Sikkim">Sikkim </option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tamil Nadu">Tamil Nadu </option>
+                    <option value="Tripura">Tripura </option>
+                    <option value="Uttar Pradesh">Uttar Pradesh </option>
+                    <option value="Uttaranchal">Uttaranchal </option>
+                    <option value="West Bengal">West Bengal </option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <!-- Text area -->
+            <div class="input-group form-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <textarea class="form-control" name="comment" placeholder="Enter Your Query" ng-model="model.Description"></textarea>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4" style="margin-top: 25px;">
+                    <button type="submit" class="btn gray">SEND MESSAGE <span class="fa fa-send"></span></button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

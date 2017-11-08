@@ -1,0 +1,120 @@
+﻿<style>
+    .nopad {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    /*image gallery*/
+    .image-checkbox {
+        cursor: pointer;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 0px solid transparent;
+        margin-bottom: 0;
+        outline: 0;
+        border-radius: 50%;
+    }
+
+        .image-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+    .image-checkbox-checked {
+        border-color: #4783B0;
+    }
+
+    .image-checkbox .fa {
+        position: absolute;
+        color: #fff;
+        background-color: #fd4326;
+        padding: 10px;
+        top: 15;
+        right: 80;
+        border-radius: 50%;
+    }
+
+    .image-checkbox-checked .fa {
+        display: block !important;
+    }
+</style>
+
+<section id="books"
+         class="parallax-section"
+         ng-controller="book_search_Controller" style="background:none;">
+
+    <div id="container_full">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center col-md-12">
+                            <h1 class="heading bold">Find your Book </h1>
+                            <hr class="style17">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group backg">
+                                <div class="form-group">
+                                    <select class="form-control" ng-model="selectedClass"
+                                            ng-options="::class.Class as ::class.Class.Name for class in itemTitleList"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div isteven-multi-select input-model="book_categorys"
+                                 output-model="search_model.book_category_listId" button-label="name"
+                                 item-label="name" tick-property="ticked"
+                                 helper-elements="" output-properties="id ticked"
+                                 placeholder="Select Book Category">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="input-group backg">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <select class="form-control" ng-model="search_model.selected_subject"
+                                                ng-options="::subject.Id as ::subject.Name for subject in selectedClass.Subject">
+                                            <option value="">Select Subject</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="input-group backg">
+                                <button type="button"
+                                        class="btn oran"
+                                        ng-click="searchBooks(); selecteBookType = 0">
+                                    Search
+                                    <span class="fa fa-search color" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1"
+                             ng-init="searchBundle = false">
+                            <div class="input-group backg">
+                                <button type="button"
+                                        ng-class="{ 'oran' : searchBundle }"
+                                        class="btn btn-default"
+                                        ng-click="searchBundle = !searchBundle">
+                                    <i class="fa fa-check"
+                                       ng-if="searchBundle"></i>
+                                    Combo
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

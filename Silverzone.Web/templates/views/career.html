@@ -1,0 +1,60 @@
+﻿<div class="row heig"></div>
+<!-- start banner section -->
+<section id="banner">
+    <div class="banner ts-faq-banner parallax-section">
+        <img src="images/career.png" class="img-responsive" alt="silverzone" />
+    </div>
+</section>
+<news_updates></news_updates>
+
+<section id="media" class="parallax-section">
+    <div id="container_full">
+
+        <div class="ts-pricing-table-compare parallax-section">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title text-center">
+                        <h1 class="heading bold"><span>Careers </span> with Silverzone</h1>
+                        <p>We have multiple openings for our corporate and branch offices. Below mentioned are the current opening with us. Salary for all the available posts would be best in industry and has no bar for deserving candidate.</p>
+                        <hr class="style17">
+                    </div>
+
+                    <div class="col-sm-12  ">
+                        <div class="ts-wrapper">
+
+                            <table class="ts-compare-table ts-res-table">
+                                <thead>
+                                    <tr class="ts-compare-heading">
+                                        <th colspan="6">
+                                            Current Openings
+                                        </th>
+                                    </tr>
+                                    <tr class="title-compare-table"><td>Profile</td><td>No. of Vacancies</td><td>Qualification</td><td>Skills</td><td> 	Exp.(In Yrs.)</td><td></td></tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="job in jobList">
+                                        <td data-title="Profile">
+                                            <span class="compare-name" ng-bind="job.JobTitle"></span>
+                                        </td>
+                                        <td ng-bind="job.Vacancies"></td>
+                                        <td ng-bind="job.Qualification"></td>
+                                        <td ng-bind="job.Skills"></td>
+                                        <td ng-bind="job.Experience"></td>
+                                        <td class="no-title">
+                                            <browse:resume></browse:resume>
+                                            <a href="#" class="ts-bt cta-compare gray btn" ng-click="uploadResume(job.Id)">Sumit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</section>
+
+
+<partners></partners>

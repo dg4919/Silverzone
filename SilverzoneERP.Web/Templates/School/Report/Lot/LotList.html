@@ -1,0 +1,63 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default" ng-repeat="data in LotList" style="cursor:pointer;">
+        <div class="panel-heading" data-toggle="collapse" href="#Lot_{{data.LotNo}}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <strong class="sz-blue">Lot No. : </strong><strong>{{data.LotNo}}</strong>
+                    </div> 
+                    <div class="col-md-4">
+                        <strong class="sz-blue">Event : </strong><strong>{{data.Event}}</strong>
+                    </div>  
+                    <div class="col-md-4">
+                        <strong class="sz-blue">Exam Date : </strong><strong>{{data.ExamDate|date:'dd-MMM-yyyy'}}</strong>
+                        <a href="#" style="text-decoration:none" class="pull-right" ng-click="GenerateReport($event,data)"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
+                    </div>  
+                                     
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <strong class="sz-blue">No. of Student : </strong><strong>{{data.TotalEnrollmentOrder}}</strong>
+                    </div>
+                    <div class="col-md-4">
+                        <strong class="sz-blue">Processed By : </strong><strong>{{data.ProcessedBy}}</strong>
+                    </div>
+                    <div class="col-md-4">
+                        <strong class="sz-blue">Processed On : </strong><strong>{{data.ProcessedOn |date:'dd-MMM-yyyy hh:mm:ss a'}}</strong>
+                    </div>  
+                </div>
+            </div>            
+        </div>
+        <div id="Lot_{{data.LotNo}}" class="panel-collapse collapse">
+            <div class="panel-body">               
+                <div class="col-md-12">
+                    <div class="panel-group">
+                        <div class="panel panel-default" ng-repeat="School in data.SchoolDetails" style="cursor:pointer;">
+                            <div class="panel-heading" data-toggle="collapse" href="#School_{{School.SchId}}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-10">
+                                            <strong class="sz-blue">School Name : </strong><strong>{{School.SchoolName}} ({{School.SchCode}})</strong>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <strong class="sz-blue">No. of Student : </strong><strong>{{School.NoOfStudent}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-10">
+                                            <strong class="sz-blue">City : </strong><strong>{{School.CityName}}</strong>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <strong class="sz-blue">State : </strong><strong>{{School.StateName}}-{{School.SchPinCode}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+

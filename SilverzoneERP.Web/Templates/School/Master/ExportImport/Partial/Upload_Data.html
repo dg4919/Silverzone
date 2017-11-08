@@ -1,0 +1,222 @@
+﻿
+
+<div  ng-if="uploadSection" style="overflow-y:scroll;max-height:300px;">
+    <div class="col-md-12">
+        <table ng-if="uploadedData.Data"
+               class="table table-striped responsive"
+               wt-responsive-table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in uploadedData.Data">
+                    <td>{{$index+1}}</td>
+                    <td ng-repeat="_header in uploadedData.Header">{{data[_header]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div ng-if="verifyDocSection">
+    <uib-tabset active="active">
+        <uib-tab index="1" heading="Correct Data" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('CorrectData')">
+                Export
+            </button>
+            <div id="CorrectData" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive"
+                       wt-responsive-table>
+                    <thead>  
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                               Correct Data
+                            </th>                           
+                        </tr>                      
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in VerifyData.Correct">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="2" heading="Already Exists" disable="tab.disabled" ng-click="Tab(false,false)">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('AlreadyExists')">
+                Export
+            </button>
+            <div id="AlreadyExists" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive" wt-responsive-table style="overflow-y:scroll;max-height:500px;">
+                    <thead> 
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                                Already Exists
+                            </th>
+                        </tr>                          
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in VerifyData.ExistData">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="3" heading="Incorrect Data" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('IncorrectData')">
+                Export
+            </button>
+             <div id="IncorrectData" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive"
+                       wt-responsive-table>
+                    <thead>     
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                                Incorrect Data
+                            </th>
+                        </tr>                     
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in VerifyData.Wrong">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="4" heading="Duplicate" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('IncorrectData')">
+                Export
+            </button>
+            <div id="IncorrectData" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive"
+                       wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                                Incorrect Data
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in VerifyData.Duplicate">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>
+    </uib-tabset>
+</div>
+
+<div ng-if="resultDocSection">
+    <uib-tabset active="active">
+        <uib-tab index="1" heading="Success" disable="tab.disabled">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('Success')">
+                Export
+            </button>
+            <div id="Success" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive"
+                       wt-responsive-table>
+                    <thead>
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                                Success
+                            </th>
+                        </tr>  
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in FinalData.Success">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>
+        <uib-tab index="2" heading="Failed" disable="tab.disabled" ng-click="Tab(false,false)">
+            <!--Start Add Fields-->
+            <button class="btn btn-default"
+                    type="button"
+                    ng-click="exportData('Failed')">
+                Export
+            </button>
+            <div id="Failed" style="overflow-y:scroll;max-height:500px;">
+                <table class="table table-striped responsive" wt-responsive-table style="overflow-y:scroll;max-height:500px;">
+                    <thead>
+                        <tr>
+                            <th colspan="{{uploadedData.Header.length+1}}" class="text-center text-danger">
+                                Failed
+                            </th>
+                        </tr>  
+                        <tr>
+                            <th>S.No.</th>
+                            <th ng-repeat="_header in uploadedData.Header">{{_header}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in FinalData.Failed">
+                            <td>{{$index+1}}</td>
+                            <td ng-repeat="_header in uploadedData.Header">{{data[_header]==0?'':data[_header]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End Add Fields-->
+        </uib-tab>        
+    </uib-tabset>
+</div>
+
+
+
+
+
+

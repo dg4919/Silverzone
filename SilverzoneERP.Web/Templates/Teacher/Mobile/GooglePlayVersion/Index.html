@@ -1,0 +1,22 @@
+﻿
+<form name="frm"
+      ng-submit="Submit(frm)"
+      ng-validate="validationOptions"
+      novalidate="novalidate">
+
+    <section class="d_header" ng-include="'Templates/Common/Partial/Header.html'"></section>
+
+    <div class="sz_card">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group col-md-2 col-md-offset-5">
+                    <label>Version :</label>
+                    <input type='text'
+                           name="GooglePlayVersion"
+                           class="form-control"                           
+                           ng-model="Obj.GooglePlayVersion" />                   
+                </div>                
+            </div>          
+        </div>        
+    </div>
+</form>
